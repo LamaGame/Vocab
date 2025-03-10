@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
             resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
         } else if (normalizedUserAnswer === normalizedCorrectAnswer) {
             // 🟠 Accent mistake (normalized matches, but raw doesn't)
-            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Achte auf Akzente! <b>${correctAnswer}</b></span>`;
+            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Achte auf die Schreibweise! <b>${correctAnswer}</b></span>`;
         } else if (normalizedCorrectAnswer.includes(normalizedUserAnswer) || normalizedUserAnswer.includes(normalizedCorrectAnswer)) {
             // 🟠 Close match (e.g., missing a small part)
             resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${correctAnswer}</b></span>`;
