@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const wordDisplay = document.getElementById("word");
     const answerInput = document.getElementById("answer");
     const checkButton = document.getElementById("check");
+    const continueButton = document.getElementById("continue"); // New button
     const resultDisplay = document.getElementById("result");
     const exampleDisplay = document.getElementById("example");
     const toggleLanguage = document.getElementById("toggleLanguage");
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let isFrenchToGerman = true; // Toggle between directions
     let wordQueue = []; // Queue of words to be shown
     let wordStats = {}; // Tracking correct/incorrect answers
+    let currentWord = null; // Store the current word
 
     // Populate unit dropdown
     function populateUnitSelect() {
@@ -44,16 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
         currentWord = getNextWord();
 
         if (!currentWord) return;
-        
+
         let wordText = isFrenchToGerman ? currentWord.french : currentWord.german;
         let noteText = isFrenchToGerman ? currentWord.noteFrench : currentWord.noteGerman;
-        
+
         wordDisplay.innerHTML = `${wordText} <i style="color:gray;">${noteText ? "(" + noteText + ")" : ""}</i>`;
         
         answerInput.value = "";
         resultDisplay.innerHTML = "";
         exampleDisplay.innerHTML = "";
-
+        continueButton.style.display = "none"; // Hide continue button initially
+        checkButton.disabled = false; // Enable check button
         answerInput.focus(); // Ensures input is focused for quick typing
     }
 
@@ -90,19 +93,21 @@ document.addEventListener("DOMContentLoaded", () => {
         if (userAnswer === correctAnswer) {
             resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
             updateWordStats(true);
-            setTimeout(displayWord, 1500); // Load next word after 1.5s
         } else if (correctAnswer.includes(userAnswer) || userAnswer.includes(correctAnswer)) {
-                        resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
+            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
             updateWordStats(false);
         } else {
             resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
             updateWordStats(false);
         }
 
-        // Show example sentence
+        // Show example sentence if available
         if (currentWord.exampleFrench) {
             exampleDisplay.innerHTML = `<i>${currentWord.exampleFrench}</i>`;
         }
+
+        checkButton.disabled = true; // Disable check button after checking answer
+        continueButton.style.display = "block"; // Show continue button
     }
 
     toggleLanguage.addEventListener("click", () => {
@@ -122,6 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === "Enter") {
             checkAnswer();
         }
+    });
+
+    continueButton.addEventListener("click", () => {
+        displayWord();
     });
 
     populateUnitSelect();
