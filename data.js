@@ -3,98 +3,114 @@ const vocabulary = {
         { 
             french: "le mode de vie", 
             german: "die Lebensweise", 
-            noteFrench: "Mes grands-parents ont un mode de vie très moderne.", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Mes grands-parents ont un mode de vie très moderne." 
         },
         { 
             french: "le lycée", 
             german: "die gymnasiale Oberstufe", 
             noteFrench: "", 
-            noteGerman: "" 
+            noteGerman: "", 
+            exampleFrench: "" 
         },
         { 
             french: "un hôpital", 
             german: "ein Krankenhaus", 
-            noteFrench: "L'hôpital se trouve à 30 km d'ici.", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "L'hôpital se trouve à 30 km d'ici." 
         },
         { 
             french: "la banlieue", 
             german: "die Vorstadt", 
-            noteFrench: "J'habite dans la banlieue de Paris.", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "J'habite dans la banlieue de Paris." 
         },
         { 
             french: "la campagne", 
             german: "das Land", 
-            noteFrench: "J'habite en Ardèche, à la campagne.", 
-            noteGerman: "im Gegensatz zur Stadt" 
+            noteFrench: "", 
+            noteGerman: "im Gegensatz zur Stadt", 
+            exampleFrench: "J'habite en Ardèche, à la campagne." 
         },
         { 
             french: "les transports en commun", 
             german: "die öffentlichen Verkehrsmittel", 
-            noteFrench: "Pour aller en ville, je prends les transports en commun.", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Pour aller en ville, je prends les transports en commun." 
         },
         { 
             french: "un effet", 
             german: "eine Wirkung, ein Effekt", 
-            noteFrench: "Les effets d'une alimentation sans sucre sont extraordinaires.", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Les effets d'une alimentation sans sucre sont extraordinaires." 
         },
         { 
             french: "mettre qn en colère", 
             german: "jdn ärgern, jdn wütend machen", 
-            noteFrench: "Les critiques me mettent en colère.", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Les critiques me mettent en colère." 
         },
         { 
             french: "déranger qn", 
             german: "jdn stören", 
-            noteFrench: "Ne le dérange pas ! Il fait ses devoirs.", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Ne le dérange pas ! Il fait ses devoirs." 
         },
         { 
             french: "surprendre qn", 
             german: "jdn überraschen, jdn erstaunen", 
-            noteFrench: "J'adore surprendre mes amis.", 
-            noteGerman: "wird wie prendre konjugiert" 
+            noteFrench: "", 
+            noteGerman: "wird wie prendre konjugiert", 
+            exampleFrench: "J'adore surprendre mes amis." 
         },
         { 
             french: "être égal à qn", 
             german: "jdm egal sein", 
-            noteFrench: "Tu veux un thé ou un café ? Comme tu veux, ça m'est égal.", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Tu veux un thé ou un café ? Comme tu veux, ça m'est égal." 
         },
         { 
             french: "influencer qn", 
             german: "jdn beeinflussen", 
-            noteFrench: "Mes parents essaient tout le temps de m'influencer.", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Mes parents essaient tout le temps de m'influencer." 
         },
         { 
-            french: "faire + inf.", 
-            german: "jdn etw. tun lassen; jdn dazu bringen, etw. zu tun; jdn dazu zwingen, etw. zu tun", 
-            noteFrench: "Cette année, j'aime bien mes cours d'histoire. Ils me font réfléchir.", 
-            noteGerman: "" 
+            french: "faire", 
+            german: "jdn etw. tun lassen; jdn dazu bringen/zwingen, etw. zu tun", 
+            noteFrench: "+ inf.", 
+            noteGerman: "", 
+            exampleFrench: "Cette année, j'aime bien mes cours d'histoire. Ils me font réfléchir." 
         },
         { 
             french: "rire", 
             german: "lachen", 
-            noteFrench: "Avec mes amis, on rit beaucoup.", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Avec mes amis, on rit beaucoup." 
         },
         { 
             french: "pleurer", 
             german: "weinen", 
-            noteFrench: "Pourquoi est-ce que tu pleures ?", 
-            noteGerman: "" 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Pourquoi est-ce que tu pleures ?" 
         },
         { 
-            french: "rendre qn/qc + adj.", 
-            german: "jdn/etw. (+ Adj.) machen", 
-            noteFrench: "Quand mes amis sont contents, ça me rend heureux !", 
-            noteGerman: "als Wirjung; wird wie attendre konjugiert" 
+            french: "rendre qn/qc", 
+            german: "jdn/etw. machen", 
+            noteFrench: "+ adj.", 
+            noteGerman: "als Wirkung; wird wie attendre konjugiert", 
+            exampleFrench: "Quand mes amis sont contents, ça me rend heureux !" 
         }
     ]
 };
