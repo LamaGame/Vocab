@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
             feedback.textContent = "✅ Richtig!";
             feedback.style.color = "green";
         } else if (distance > 0 && distance <= maxAllowedDistance) {
-            feedback.textContent = "⚠️ Fast richtig! Kleine Fehler.";
+            feedback.textContent = "⚠️ Fast richtig!";
             feedback.style.color = "orange";
         } else {
             feedback.textContent = "❌ Falsch!";
@@ -110,11 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Display correct answer and note
-        correctAnswerDisplay.textContent = `Richtige Antwort: ${correctAnswer}`;
+        correctAnswerDisplay.textContent = correctAnswer;
         correctAnswerDisplay.classList.remove("hidden");
 
         if (correctNote) {
-            noteDisplay.textContent = `💡 ${correctNote}`;
+            noteDisplay.textContent = correctNote;
             noteDisplay.classList.remove("hidden");
         }
 
