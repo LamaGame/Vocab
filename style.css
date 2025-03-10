@@ -18,3 +18,20 @@ input, button, select {
     font-weight: bold;
     margin-top: 10px;
 }
+
+#correct-answer {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: blue;
+}
+
+#note-display {
+    font-style: italic;
+    color: gray;
+    margin-top: 5px;
+}
+
+.hidden {
+    display: none;
+}
