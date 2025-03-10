@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (userAnswer === correctAnswer) {
             resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
+            setTimeout(displayWord, 2500); // Load next word after 2.5s
         } else if (correctAnswer.includes(userAnswer) || userAnswer.includes(correctAnswer)) {
             resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
         } else {
