@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let wordIndex = 0; // Tracks current position in the shuffled list
     let currentWord = null; // Store the current word
 
-    // Populate unit dropdown
     function populateUnitSelect() {
         for (let unit in vocabulary) {
             let option = document.createElement("option");
@@ -22,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
             option.textContent = unit;
             unitSelect.appendChild(option);
         }
-        unitSelect.value = currentUnit; // Set default unit
+        unitSelect.value = currentUnit;
     }
 
     function initializeWordQueue() {
@@ -41,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function getNextWord() {
         if (wordIndex >= wordQueue.length) {
             shuffleWords(); // Reshuffle when the list is exhausted
-            wordIndex = 0; // Reset index
+            wordIndex = 0;
         }
         return wordQueue[wordIndex++];
     }
@@ -58,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
         answerInput.value = "";
         resultDisplay.innerHTML = "";
         exampleDisplay.innerHTML = "";
-        continueButton.style.display = "none"; // Hide continue button initially
-        checkButton.disabled = false; // Enable check button
-        answerInput.focus(); // Focus on input field
+        continueButton.style.display = "none";
+        checkButton.disabled = false;
+        answerInput.focus();
     }
 
     function normalizeString(str) {
@@ -72,8 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function checkAnswer() {
-        let userAnswer = normalizeString(answerInput.value);
-        let correctAnswer = normalizeString(isFrenchToGerman ? currentWord.german : currentWord.french);
+        let userAnswer = answerInput.value.trim();
+        let correctAnswer = isFrenchToGerman ? currentWord.german : currentWord.french;
+        
+        let normalizedUserAnswer = normalizeString(userAnswer);
+        let normalizedCorrectAnswer = normalizeString(correctAnswer);
 
         if (!userAnswer) {
             resultDisplay.innerHTML = "<span style='color: red;'>Bitte eine Antwort eingeben!</span>";
@@ -81,11 +83,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (userAnswer === correctAnswer) {
+            // ✅ Exact match
             resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
-        } else if (correctAnswer.includes(userAnswer) || userAnswer.includes(correctAnswer)) {
-            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
+        } else if (normalizedUserAnswer === normalizedCorrectAnswer) {
+            // 🟠 Accent mistake (normalized matches, but raw doesn't)
+            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Achte auf Akzente! <b>${correctAnswer}</b></span>`;
+        } else if (normalizedCorrectAnswer.includes(normalizedUserAnswer) || normalizedUserAnswer.includes(normalizedCorrectAnswer)) {
+            // 🟠 Close match (e.g., missing a small part)
+            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${correctAnswer}</b></span>`;
         } else {
-            resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
+            // ❌ Incorrect answer
+            resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${correctAnswer}</b></span>`;
         }
 
         // Show example sentence if available
