@@ -111,6 +111,76 @@ const vocabulary = {
             noteFrench: "+ adj.", 
             noteGerman: "als Wirkung; wird wie attendre konjugiert", 
             exampleFrench: "Quand mes amis sont contents, ça me rend heureux !" 
+        },
+        { 
+            french: "espérer que", 
+            german: "hoffen, dass", 
+            noteFrench: "", 
+            noteGerman: "wird wie préférer konjugiert", 
+            exampleFrench: "J'espère qu'on va bientôt arriver." 
+        },
+        { 
+            french: "moderniser qc", 
+            german: "etw. modernisieren, etw. modern umgestalten", 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "→ moderne" 
+        },
+        { 
+            french: "arrêter de + inf.", 
+            german: "aufhören etw. zu tun", 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Arrête de dessiner en classe !" 
+        },
+        { 
+            french: "faux/fausse", 
+            german: "falsch", 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "≠ vrai" 
+        },
+        { 
+            french: "libre", 
+            german: "frei", 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "→ la liberté" 
+        },
+        { 
+            french: "la mobylette", 
+            german: "das Mofa", 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Ma mobylette est cassée, je dois aller au travail à pied." 
+        },
+        { 
+            french: "ailleurs", 
+            german: "anderswo, woandershin", 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Est-ce que tu voudrais vivre ailleurs ?" 
+        },
+        { 
+            french: "être à table", 
+            german: "am (Ess-)Tisch sitzen, bei Tisch sein", 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Le soir, quand on est à table, on raconte notre journée !" 
+        },
+        { 
+            french: "stressé/stressée", 
+            german: "gestresst", 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "Les gens stressés dorment mal." 
+        },
+        { 
+            french: "sentir qc", 
+            german: "etw. riechen, auch: etw. schmecken", 
+            noteFrench: "", 
+            noteGerman: "wird wie sortir konjugiert", 
+            exampleFrench: "ça sent" 
         }
     ],
     "Unité 3": [
