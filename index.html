@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Französisch Vokabeltrainer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Französisch Vokabeltrainer</h1>
+    
+    <label for="unit-select">Wähle eine Einheit:</label>
+    <select id="unit-select">
+        <option value="">-- Einheit auswählen --</option>
+    </select>
+
+    <div id="vocab-container">
+        <p id="word-display">Wort wird hier angezeigt</p>
+        <input type="text" id="answer-input" placeholder="Übersetzung eingeben">
+        <button id="check-button">Überprüfen</button>
+        <p id="feedback"></p>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
