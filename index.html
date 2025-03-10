@@ -14,11 +14,19 @@
         <option value="">-- Einheit auswählen --</option>
     </select>
 
+    <label for="mode-select">Wähle eine Richtung:</label>
+    <select id="mode-select">
+        <option value="german-to-french">Deutsch → Französisch</option>
+        <option value="french-to-german">Französisch → Deutsch</option>
+    </select>
+
     <div id="vocab-container">
         <p id="word-display">Wort wird hier angezeigt</p>
         <input type="text" id="answer-input" placeholder="Übersetzung eingeben">
         <button id="check-button">Überprüfen</button>
         <p id="feedback"></p>
+        <p id="correct-answer" class="hidden"></p>
+        <p id="note-display" class="hidden"><em>Zusätzliche Info</em></p>
     </div>
 
     <script src="data.js"></script>
