@@ -28,20 +28,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function displayWord() {
-        currentWord = getRandomWord();
-        if (!currentWord) return;
-        
-        let wordText = isFrenchToGerman ? currentWord.french : currentWord.german;
-        let noteText = isFrenchToGerman ? currentWord.noteFrench : currentWord.noteGerman;
-        
-        wordDisplay.innerHTML = `${wordText} <i style="color:gray;">${noteText ? "(" + noteText + ")" : ""}</i>`;
-        
-        answerInput.value = "";
-        resultDisplay.innerHTML = "";
-        exampleDisplay.innerHTML = "";
-        answerInput.focus();
-    }
-
+    currentWord = getRandomWord();
+    if (!currentWord) return;
+    
+    let wordText = isFrenchToGerman ? currentWord.french : currentWord.german;
+    let noteText = isFrenchToGerman ? currentWord.noteFrench : currentWord.noteGerman;
+    
+    wordDisplay.innerHTML = `${wordText} <i style="color:gray;">${noteText ? "(" + noteText + ")" : ""}</i>`;
+    
+    answerInput.value = "";
+    resultDisplay.innerHTML = "";
+    exampleDisplay.innerHTML = "";
+    
+    answerInput.focus(); // Ensures input is focused for quick typing
+}
+    
     function normalizeString(str) {
         return str
             .normalize("NFD") // Decomposes accents
