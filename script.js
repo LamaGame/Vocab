@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const unitSelect = document.getElementById("unitSelect");
     const wordDisplay = document.getElementById("word");
     const answerInput = document.getElementById("answer");
     const checkButton = document.getElementById("check");
@@ -6,9 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const exampleDisplay = document.getElementById("example");
     const toggleLanguage = document.getElementById("toggleLanguage");
 
-    let currentUnit = "Unité 2";  // Change this if more units are added
+    let currentUnit = "Unité 2"; // Default unit
     let currentWord = null;
     let isFrenchToGerman = true; // Toggle between directions
+
+    // Populate unit dropdown
+    function populateUnitSelect() {
+        for (let unit in vocabulary) {
+            let option = document.createElement("option");
+            option.value = unit;
+            option.textContent = unit;
+            unitSelect.appendChild(option);
+        }
+        unitSelect.value = currentUnit; // Set default unit
+    }
 
     function getRandomWord() {
         const words = vocabulary[currentUnit];
@@ -17,11 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function displayWord() {
         currentWord = getRandomWord();
-        if (isFrenchToGerman) {
-            wordDisplay.innerHTML = `${currentWord.french} <i style="color:gray;">${currentWord.noteFrench ? "(" + currentWord.noteFrench + ")" : ""}</i>`;
-        } else {
-            wordDisplay.innerHTML = `${currentWord.german} <i style="color:gray;">${currentWord.noteGerman ? "(" + currentWord.noteGerman + ")" : ""}</i>`;
-        }
+        if (!currentWord) return;
+        
+        let wordText = isFrenchToGerman ? currentWord.french : currentWord.german;
+        let noteText = isFrenchToGerman ? currentWord.noteFrench : currentWord.noteGerman;
+        
+        wordDisplay.innerHTML = `${wordText} <i style="color:gray;">${noteText ? "(" + noteText + ")" : ""}</i>`;
+        
         answerInput.value = "";
         resultDisplay.innerHTML = "";
         exampleDisplay.innerHTML = "";
@@ -65,6 +79,11 @@ document.addEventListener("DOMContentLoaded", () => {
         displayWord();
     });
 
+    unitSelect.addEventListener("change", () => {
+        currentUnit = unitSelect.value;
+        displayWord();
+    });
+
     checkButton.addEventListener("click", checkAnswer);
     answerInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
@@ -72,5 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    populateUnitSelect();
     displayWord();
 });
