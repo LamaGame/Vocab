@@ -9,15 +9,25 @@
 <body>
     <div class="container">
         <h1>Französisch-Vokabeltrainer</h1>
+        
+        <!-- Dropdown to select the unit -->
+        <label for="unitSelect">Lerneinheit wählen:</label>
+        <select id="unitSelect"></select>
+
+        <!-- Toggle button for switching between French → German and vice versa -->
         <button id="toggleLanguage">Französisch → Deutsch</button>
 
+        <!-- Card displaying the word to translate -->
         <div class="card">
             <p id="word">Wort wird geladen...</p>
             <input type="text" id="answer" placeholder="Übersetzung eingeben">
             <button id="check">Prüfen</button>
         </div>
 
+        <!-- Result of the answer -->
         <p id="result"></p>
+
+        <!-- Example sentence displayed after checking the answer -->
         <p id="example"></p>
     </div>
 
