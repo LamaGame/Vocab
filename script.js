@@ -1,123 +1,76 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const unitSelect = document.getElementById("unit-select");
-    const modeSelect = document.getElementById("mode-select");
-    const wordDisplay = document.getElementById("word-display");
-    const answerInput = document.getElementById("answer-input");
-    const checkButton = document.getElementById("check-button");
-    const feedback = document.getElementById("feedback");
-    const correctAnswerDisplay = document.getElementById("correct-answer");
-    const noteDisplay = document.getElementById("note-display");
+    const wordDisplay = document.getElementById("word");
+    const answerInput = document.getElementById("answer");
+    const checkButton = document.getElementById("check");
+    const resultDisplay = document.getElementById("result");
+    const exampleDisplay = document.getElementById("example");
+    const toggleLanguage = document.getElementById("toggleLanguage");
 
-    let currentUnit = null;
+    let currentUnit = "Unité 2";  // Change this if more units are added
     let currentWord = null;
-    let mode = "german-to-french"; // Default mode
+    let isFrenchToGerman = true; // Toggle between directions
 
-    // Function to calculate Levenshtein distance (number of changes needed to match strings)
-    function levenshteinDistance(a, b) {
-        const dp = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0));
-
-        for (let i = 0; i <= a.length; i++) dp[i][0] = i;
-        for (let j = 0; j <= b.length; j++) dp[0][j] = j;
-
-        for (let i = 1; i <= a.length; i++) {
-            for (let j = 1; j <= b.length; j++) {
-                if (a[i - 1] === b[j - 1]) {
-                    dp[i][j] = dp[i - 1][j - 1];
-                } else {
-                    dp[i][j] = Math.min(
-                        dp[i - 1][j] + 1, // Deletion
-                        dp[i][j - 1] + 1, // Insertion
-                        dp[i - 1][j - 1] + 1 // Substitution
-                    );
-                }
-            }
-        }
-        return dp[a.length][b.length];
+    function getRandomWord() {
+        const words = vocabulary[currentUnit];
+        return words[Math.floor(Math.random() * words.length)];
     }
 
-    // Load units into the dropdown
-    Object.keys(vocabulary).forEach(unit => {
-        let option = document.createElement("option");
-        option.value = unit;
-        option.textContent = unit;
-        unitSelect.appendChild(option);
-    });
-
-    // Update mode when selection changes
-    modeSelect.addEventListener("change", () => {
-        mode = modeSelect.value;
-        nextWord();
-    });
-
-    // Select a unit and start quiz
-    unitSelect.addEventListener("change", () => {
-        currentUnit = unitSelect.value;
-        if (currentUnit) {
-            nextWord();
-        }
-    });
-
-    // Load next word
-    function nextWord() {
-        if (!currentUnit) return;
-        let words = vocabulary[currentUnit];
-        currentWord = words[Math.floor(Math.random() * words.length)];
-
-        // Show the correct word based on mode
-        if (mode === "german-to-french") {
-            wordDisplay.textContent = currentWord.german;
+    function displayWord() {
+        currentWord = getRandomWord();
+        if (isFrenchToGerman) {
+            wordDisplay.innerHTML = `${currentWord.french} <i style="color:gray;">${currentWord.noteFrench ? "(" + currentWord.noteFrench + ")" : ""}</i>`;
         } else {
-            wordDisplay.textContent = currentWord.french;
+            wordDisplay.innerHTML = `${currentWord.german} <i style="color:gray;">${currentWord.noteGerman ? "(" + currentWord.noteGerman + ")" : ""}</i>`;
         }
-
-        // Hide correct answer and note at the start
-        correctAnswerDisplay.classList.add("hidden");
-        noteDisplay.classList.add("hidden");
-        correctAnswerDisplay.textContent = "";
-        noteDisplay.textContent = "";
-
         answerInput.value = "";
-        feedback.textContent = "";
+        resultDisplay.innerHTML = "";
+        exampleDisplay.innerHTML = "";
+        answerInput.focus();
     }
 
-    // Check answer
-    checkButton.addEventListener("click", () => {
-        if (!currentWord) return;
+    function normalizeString(str) {
+        return str
+            .normalize("NFD") // Decomposes accents
+            .replace(/[\u0300-\u036f]/g, "") // Removes accents
+            .toLowerCase()
+            .trim();
+    }
 
-        let userAnswer = answerInput.value.trim().toLowerCase();
-        let correctAnswer, correctNote;
+    function checkAnswer() {
+        let userAnswer = normalizeString(answerInput.value);
+        let correctAnswer = normalizeString(isFrenchToGerman ? currentWord.german : currentWord.french);
 
-        if (mode === "german-to-french") {
-            correctAnswer = currentWord.french.toLowerCase();
-            correctNote = currentWord.noteFrench;
-        } else {
-            correctAnswer = currentWord.german.toLowerCase();
-            correctNote = currentWord.noteGerman;
+        if (!userAnswer) {
+            resultDisplay.innerHTML = "<span style='color: red;'>Bitte eine Antwort eingeben!</span>";
+            return;
         }
-
-        let distance = levenshteinDistance(userAnswer, correctAnswer);
-        let maxAllowedDistance = Math.ceil(correctAnswer.length * 0.2); // Allow small typos (max 20% of word length)
 
         if (userAnswer === correctAnswer) {
-            feedback.textContent = "✅ Richtig!";
-            feedback.style.color = "green";
-        } else if (distance > 0 && distance <= maxAllowedDistance) {
-            feedback.textContent = "⚠️ Fast richtig!";
-            feedback.style.color = "orange";
+            resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
+        } else if (correctAnswer.includes(userAnswer) || userAnswer.includes(correctAnswer)) {
+            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
         } else {
-            feedback.textContent = "❌ Falsch!";
-            feedback.style.color = "red";
+            resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
         }
 
-        // Display correct answer and note
-        correctAnswerDisplay.textContent = correctAnswer;
-        correctAnswerDisplay.classList.remove("hidden");
-
-        if (correctNote) {
-            noteDisplay.textContent = correctNote;
-            noteDisplay.classList.remove("hidden");
+        // Show example sentence
+        if (currentWord.exampleFrench) {
+            exampleDisplay.innerHTML = `<i>${currentWord.exampleFrench}</i>`;
         }
+    }
 
-        setTimeout(nextWord, 4000);
+    toggleLanguage.addEventListener("click", () => {
+        isFrenchToGerman = !isFrenchToGerman;
+        toggleLanguage.innerText = isFrenchToGerman ? "Französisch → Deutsch" : "Deutsch → Französisch";
+        displayWord();
     });
+
+    checkButton.addEventListener("click", checkAnswer);
+    answerInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            checkAnswer();
+        }
+    });
+
+    displayWord();
 });
