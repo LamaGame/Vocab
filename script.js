@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentUnit = "Unité 2"; // Default unit
     let isFrenchToGerman = true; // Toggle between directions
-    let wordQueue = []; // Queue of words to be shown
-    let wordStats = {}; // Tracking correct/incorrect answers
+    let wordQueue = []; // Holds words without duplicates
+    let wordIndex = 0; // Tracks current position in the shuffled list
     let currentWord = null; // Store the current word
 
     // Populate unit dropdown
@@ -26,26 +26,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function initializeWordQueue() {
-        wordQueue = vocabulary[currentUnit].map(word => ({
-            word,
-            weight: 1 // Default weight for fair initial distribution
-        }));
+        wordQueue = [...vocabulary[currentUnit]]; // Copy words from vocabulary
         shuffleWords();
+        wordIndex = 0; // Reset index
     }
 
     function shuffleWords() {
-        wordQueue.sort((a, b) => a.weight - b.weight || Math.random() - 0.5);
+        for (let i = wordQueue.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [wordQueue[i], wordQueue[j]] = [wordQueue[j], wordQueue[i]];
+        }
     }
 
     function getNextWord() {
-        return wordQueue.find(w => w.weight > 0)?.word || vocabulary[currentUnit][0];
+        if (wordIndex >= wordQueue.length) {
+            shuffleWords(); // Reshuffle when the list is exhausted
+            wordIndex = 0; // Reset index
+        }
+        return wordQueue[wordIndex++];
     }
 
     function displayWord() {
         if (wordQueue.length === 0) initializeWordQueue();
         currentWord = getNextWord();
-
-        if (!currentWord) return;
 
         let wordText = isFrenchToGerman ? currentWord.french : currentWord.german;
         let noteText = isFrenchToGerman ? currentWord.noteFrench : currentWord.noteGerman;
@@ -57,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         exampleDisplay.innerHTML = "";
         continueButton.style.display = "none"; // Hide continue button initially
         checkButton.disabled = false; // Enable check button
-        answerInput.focus(); // Ensures input is focused for quick typing
+        answerInput.focus(); // Focus on input field
     }
 
     function normalizeString(str) {
@@ -66,19 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .replace(/[\u0300-\u036f]/g, "") // Removes accents
             .toLowerCase()
             .trim();
-    }
-
-    function updateWordStats(isCorrect) {
-        let wordObj = wordQueue.find(w => w.word === currentWord);
-        if (!wordObj) return;
-
-        if (isCorrect) {
-            wordObj.weight = Math.max(1, wordObj.weight * 0.5); // Reduce weight, but never below 1
-        } else {
-            wordObj.weight = Math.min(10, wordObj.weight * 2); // Increase weight, max 10
-        }
-
-        shuffleWords();
     }
 
     function checkAnswer() {
@@ -92,13 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (userAnswer === correctAnswer) {
             resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
-            updateWordStats(true);
         } else if (correctAnswer.includes(userAnswer) || userAnswer.includes(correctAnswer)) {
             resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
-            updateWordStats(false);
         } else {
             resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
-            updateWordStats(false);
         }
 
         // Show example sentence if available
