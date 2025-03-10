@@ -1,19 +1,19 @@
 const vocabulary = {
-    "Unité 2 - Auftaktseite": [
+    "Unité 2": [
         { 
             french: "le mode de vie", 
             german: "die Lebensweise", 
-            noteFrench: "", 
+            noteFrench: "Mes grands-parents ont un mode de vie très moderne.", 
             noteGerman: "" 
         },
         { 
             french: "le lycée", 
-            german: "das Gymnasium, die soziale Oberstufe", 
+            german: "die gymnasiale Oberstufe", 
             noteFrench: "", 
             noteGerman: "" 
         },
         { 
-            french: "un hôpital / des hôpitaux", 
+            french: "un hôpital", 
             german: "ein Krankenhaus", 
             noteFrench: "L'hôpital se trouve à 30 km d'ici.", 
             noteGerman: "" 
@@ -27,18 +27,15 @@ const vocabulary = {
         { 
             french: "la campagne", 
             german: "das Land", 
-            noteFrench: "Mes grands-parents ont un mode de vie très moderne.", 
-            noteGerman: "" 
+            noteFrench: "J'habite en Ardèche, à la campagne.", 
+            noteGerman: "im Gegensatz zur Stadt" 
         },
         { 
             french: "les transports en commun", 
-            german: "öffentliche Verkehrsmittel", 
+            german: "die öffentlichen Verkehrsmittel", 
             noteFrench: "Pour aller en ville, je prends les transports en commun.", 
             noteGerman: "" 
-        }
-    ],
-
-    "Unité 2 - Vocabulaire thématique": [
+        },
         { 
             french: "un effet", 
             german: "eine Wirkung, ein Effekt", 
@@ -47,7 +44,7 @@ const vocabulary = {
         },
         { 
             french: "mettre qn en colère", 
-            german: "jdn wütend machen", 
+            german: "jdn ärgern, jdn wütend machen", 
             noteFrench: "Les critiques me mettent en colère.", 
             noteGerman: "" 
         },
@@ -60,8 +57,8 @@ const vocabulary = {
         { 
             french: "surprendre qn", 
             german: "jdn überraschen, jdn erstaunen", 
-            noteFrench: "L'adulte surprendre mes amis.", 
-            noteGerman: "" 
+            noteFrench: "J'adore surprendre mes amis.", 
+            noteGerman: "wird wie prendre konjugiert" 
         },
         { 
             french: "être égal à qn", 
@@ -76,9 +73,9 @@ const vocabulary = {
             noteGerman: "" 
         },
         { 
-            french: "faire", 
-            german: "tun, machen", 
-            noteFrench: "Cette année, j'aime bien mes cours d'histoire, ils me font réfléchir.", 
+            french: "faire + inf.", 
+            german: "jdn etw. tun lassen; jdn dazu bringen, etw. zu tun; jdn dazu zwingen, etw. zu tun", 
+            noteFrench: "Cette année, j'aime bien mes cours d'histoire. Ils me font réfléchir.", 
             noteGerman: "" 
         },
         { 
@@ -95,9 +92,9 @@ const vocabulary = {
         },
         { 
             french: "rendre qn/qc + adj.", 
-            german: "jdn/etw. (Adj.) machen", 
+            german: "jdn/etw. (+ Adj.) machen", 
             noteFrench: "Quand mes amis sont contents, ça me rend heureux !", 
-            noteGerman: "" 
+            noteGerman: "als Wirjung; wird wie attendre konjugiert" 
         }
     ]
 };
