@@ -8,8 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleLanguage = document.getElementById("toggleLanguage");
 
     let currentUnit = "Unité 2"; // Default unit
-    let currentWord = null;
     let isFrenchToGerman = true; // Toggle between directions
+    let wordQueue = []; // Queue of words to be shown
+    let wordStats = {}; // Tracking correct/incorrect answers
 
     // Populate unit dropdown
     function populateUnitSelect() {
@@ -22,33 +23,59 @@ document.addEventListener("DOMContentLoaded", () => {
         unitSelect.value = currentUnit; // Set default unit
     }
 
-    function getRandomWord() {
-        const words = vocabulary[currentUnit];
-        return words[Math.floor(Math.random() * words.length)];
+    function initializeWordQueue() {
+        wordQueue = vocabulary[currentUnit].map(word => ({
+            word,
+            weight: 1 // Default weight for fair initial distribution
+        }));
+        shuffleWords();
+    }
+
+    function shuffleWords() {
+        wordQueue.sort((a, b) => a.weight - b.weight || Math.random() - 0.5);
+    }
+
+    function getNextWord() {
+        return wordQueue.find(w => w.weight > 0)?.word || vocabulary[currentUnit][0];
     }
 
     function displayWord() {
-    currentWord = getRandomWord();
-    if (!currentWord) return;
-    
-    let wordText = isFrenchToGerman ? currentWord.french : currentWord.german;
-    let noteText = isFrenchToGerman ? currentWord.noteFrench : currentWord.noteGerman;
-    
-    wordDisplay.innerHTML = `${wordText} <i style="color:gray;">${noteText ? "(" + noteText + ")" : ""}</i>`;
-    
-    answerInput.value = "";
-    resultDisplay.innerHTML = "";
-    exampleDisplay.innerHTML = "";
-    
-    answerInput.focus(); // Ensures input is focused for quick typing
-}
-    
+        if (wordQueue.length === 0) initializeWordQueue();
+        currentWord = getNextWord();
+
+        if (!currentWord) return;
+        
+        let wordText = isFrenchToGerman ? currentWord.french : currentWord.german;
+        let noteText = isFrenchToGerman ? currentWord.noteFrench : currentWord.noteGerman;
+        
+        wordDisplay.innerHTML = `${wordText} <i style="color:gray;">${noteText ? "(" + noteText + ")" : ""}</i>`;
+        
+        answerInput.value = "";
+        resultDisplay.innerHTML = "";
+        exampleDisplay.innerHTML = "";
+
+        answerInput.focus(); // Ensures input is focused for quick typing
+    }
+
     function normalizeString(str) {
         return str
             .normalize("NFD") // Decomposes accents
             .replace(/[\u0300-\u036f]/g, "") // Removes accents
             .toLowerCase()
             .trim();
+    }
+
+    function updateWordStats(isCorrect) {
+        let wordObj = wordQueue.find(w => w.word === currentWord);
+        if (!wordObj) return;
+
+        if (isCorrect) {
+            wordObj.weight = Math.max(1, wordObj.weight * 0.5); // Reduce weight, but never below 1
+        } else {
+            wordObj.weight = Math.min(10, wordObj.weight * 2); // Increase weight, max 10
+        }
+
+        shuffleWords();
     }
 
     function checkAnswer() {
@@ -62,11 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (userAnswer === correctAnswer) {
             resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
-            setTimeout(displayWord, 2500); // Load next word after 2.5s
+            updateWordStats(true);
+            setTimeout(displayWord, 1500); // Load next word after 1.5s
         } else if (correctAnswer.includes(userAnswer) || userAnswer.includes(correctAnswer)) {
-            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
+                        resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
+            updateWordStats(false);
         } else {
             resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${isFrenchToGerman ? currentWord.german : currentWord.french}</b></span>`;
+            updateWordStats(false);
         }
 
         // Show example sentence
@@ -83,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     unitSelect.addEventListener("change", () => {
         currentUnit = unitSelect.value;
+        initializeWordQueue();
         displayWord();
     });
 
@@ -94,5 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     populateUnitSelect();
+    initializeWordQueue();
     displayWord();
 });
