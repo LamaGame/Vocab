@@ -112,5 +112,21 @@ const vocabulary = {
             noteGerman: "als Wirkung; wird wie attendre konjugiert", 
             exampleFrench: "Quand mes amis sont contents, ça me rend heureux !" 
         }
+    ],
+    "Unité 3": [
+        { 
+            french: "", 
+            german: "", 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "" 
+        },
+        { 
+            french: "", 
+            german: "", 
+            noteFrench: "", 
+            noteGerman: "", 
+            exampleFrench: "" 
+        },
     ]
 };
