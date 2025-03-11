@@ -204,16 +204,16 @@ const vocabulary = {
             exampleFrench: "Ça me donne envie de danser !" 
         },
         { 
-            french: "empêcher qn/qc de + inf.", 
+            french: "empêcher qn/qc de", 
             german: "jdn/etw. daran hindern, etw. zu tun", 
-            noteFrench: "", 
+            noteFrench: "+ inf.", 
             noteGerman: "", 
             exampleFrench: "Ta musique m'empêche de dormir." 
         },
         { 
-            french: "mentir (à qn)", 
+            french: "mentir", 
             german: "lügen", 
-            noteFrench: "", 
+            noteFrench: "(à qn)", 
             noteGerman: "wird wie sortir konjugiert", 
             exampleFrench: "Non, ce n'est pas vrai, tu mens !" 
         },
