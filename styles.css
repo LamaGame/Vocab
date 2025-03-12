@@ -140,7 +140,7 @@ body.dark-mode {
     background: var(--container-dark);
 }
 
-.card.dark-mode {
+.dark-mode.card {
     background: var(--button-dark);
 }
 
