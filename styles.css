@@ -168,9 +168,10 @@ body.dark-mode {
     color: var(--text-light);
     white-space: nowrap;
     position: fixed;
-    top: ;
+    top: 0;
     font-size: 16px;
     font-weight: bold;
+    padding: 10px 0;
 }
 
 /* Track that moves continuously */
