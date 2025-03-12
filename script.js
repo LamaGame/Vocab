@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Start lesson
     startButton.addEventListener("click", () => {
         if (selectedLanguage) {
-            window.location.href = selectedLanguage + ".html"; // Redirect to lesson page
+            window.location.href = selectedLanguage + "/index.html"; // Redirect to lesson page
         } else {
             alert("Please select a language!");
         }
