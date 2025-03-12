@@ -151,3 +151,43 @@ button.dark-mode {
 button.dark-mode:hover {
     background: var(--button-hover-dark);
 }
+
+/* ======= Scrolling News Header ======= */
+.news-container {
+    width: 100%;
+    overflow: hidden;
+    background: var(--container-light);
+    color: var(--text-light);
+    padding: 10px 0;
+    white-space: nowrap;
+    position: relative;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.news-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scrollNews 15s linear infinite;
+}
+
+.news-item {
+    display: inline-block;
+    padding: 0 50px;
+}
+
+/* Scrolling Animation */
+@keyframes scrollNews {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Dark mode compatibility */
+.news-container.dark-mode  {
+    background: var(--container-dark);
+    color: var(--text-dark);
+}
