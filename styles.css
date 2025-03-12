@@ -181,12 +181,12 @@ body.dark-mode {
     display: flex;
     justify-content: space-evenly;
     width: 200%;
-    gap: 50px;
     animation: scrollNews 30s linear infinite;
 }
 
 /* Individual News Items */
 .news-item {
+    margin: 0 12.5%;
     display: inline-block;
     width: min-content;
     white-space: nowrap;
