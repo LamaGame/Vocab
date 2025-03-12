@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Englisch-Vokabeltrainer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Englisch Vokabeltrainer</h1>
+        
+        <!-- Dropdown to select the unit -->
+        <label for="unitSelect">Lerneinheit wählen:</label>
+        <select id="unitSelect"></select>
 
+        <!-- Toggle button for switching between French → German and vice versa -->
+        <button id="toggleLanguage">Englisch → Deutsch</button>
+
+        <!-- Card displaying the word to translate -->
+        <div class="card">
+            <p id="word">Wort wird geladen...</p>
+            <input type="text" id="answer" placeholder="Übersetzung eingeben">
+            <!-- Example sentence displayed after checking the answer -->
+            <p id="example"></p>
+            <button id="check">Prüfen</button>
+            <button id="continue" style="display: none;">Weiter</button>
+        </div>
+
+        <!-- Result of the answer -->
+        <p id="result"></p> 
+    </div>
+    
+    <!-- Dunkelmodus-Umschalter -->
+        <button id="darkModeToggle">🌙</button>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
