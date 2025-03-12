@@ -29,7 +29,6 @@ html, body {
     transition: background 0.3s, color 0.3s;
     overscroll-behavior-y: none;
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 /* Container */
@@ -86,7 +85,6 @@ h1 {
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     margin: 20px 0;
-    padding-bottom: 10px;
     justify-content: center;
 }
 
@@ -110,7 +108,8 @@ h1 {
     text-align: center;
     cursor: pointer;
     scroll-snap-align: center;
-    transition: transform 0.3s;
+    white-space: wrap;
+    transition: transform 0.5s;
 }
 
 .card.selected {
