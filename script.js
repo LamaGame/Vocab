@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================== */
     startButton.addEventListener("click", () => {
         if (selectedLanguage) {
-            window.location.href = selectedLanguage + ".html"; // Redirects based on selection
+            window.location.href = selectedLanguage + "/index.html"; // Redirects based on selection
         } else {
             alert("Bitte wähle eine Sprache aus!");
         }
