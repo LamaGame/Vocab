@@ -179,8 +179,9 @@ body.dark-mode {
 /* News Track (Flexible Container) */
 .news-track {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     width: 200%;
+    gap: 12.5%;
     animation: scrollNews 30s linear infinite;
 }
 
