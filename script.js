@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container.classList.add("dark-mode");
         cards.forEach(card => card.classList.add("dark-mode"));
         localStorage.setItem("darkMode", "enabled");
-        darkModeToggle.textContent = "☀️ Light Mode";
+        darkModeToggle.textContent = "☀️ Lichtmodus";
     }
 
     function disableDarkMode() {
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container.classList.remove("dark-mode");
         cards.forEach(card => card.classList.remove("dark-mode"));
         localStorage.setItem("darkMode", "disabled");
-        darkModeToggle.textContent = "🌙 Dark Mode";
+        darkModeToggle.textContent = "🌙 Dunkelmodus";
     }
 
     // Load dark mode preference
@@ -42,12 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ==================================
-       🎯 CENTER THE SELECTED CARD 
+       🎯 DETECT & HIGHLIGHT CENTERED CARD
     ================================== */
-    function centerCard(card) {
-        card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-    }
-
     function updateSelectedCard() {
         let closestCard = null;
         let minDistance = Infinity;
@@ -70,17 +66,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Detect scroll to determine centered card
+    // Detect when scrolling stops & update selection
     carousel.addEventListener("scroll", () => {
         clearTimeout(carousel.scrollTimeout);
         carousel.scrollTimeout = setTimeout(updateSelectedCard, 100);
     });
 
-    // Click to center a card
+    // Click to center a card, but don't apply selection effect immediately
     cards.forEach(card => {
         card.addEventListener("click", () => {
-            centerCard(card);
-            updateSelectedCard();
+            card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
         });
     });
 
@@ -92,9 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================== */
     startButton.addEventListener("click", () => {
         if (selectedLanguage) {
-            window.location.href = selectedLanguage + "/index.html"; // Redirects based on selection
+            window.location.href = selectedLanguage + ".html"; // Redirects based on selection
         } else {
-            alert("Please select a language first!");
+            alert("Bitte wähle eine Sprache aus!");
         }
     });
 });
