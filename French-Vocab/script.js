@@ -134,13 +134,17 @@ document.addEventListener("DOMContentLoaded", () => {
     displayWord();
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const body = document.body;
+    const container = document.querySelector(".container");
+
     /* ============================
        🌙 DARK MODE FUNCTIONALITY
     ============================ */
     function enableDarkMode() {
         body.classList.add("dark-mode");
         container.classList.add("dark-mode");
-        cards.forEach(card => card.classList.add("dark-mode"));
         localStorage.setItem("darkMode", "enabled");
         darkModeToggle.textContent = "☀️";
     }
@@ -148,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function disableDarkMode() {
         body.classList.remove("dark-mode");
         container.classList.remove("dark-mode");
-        cards.forEach(card => card.classList.remove("dark-mode"));
         localStorage.setItem("darkMode", "disabled");
         darkModeToggle.textContent = "🌙";
     }
@@ -158,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         enableDarkMode();
     }
 
+    // Toggle dark mode when button is clicked
     darkModeToggle.addEventListener("click", () => {
         if (body.classList.contains("dark-mode")) {
             disableDarkMode();
@@ -165,3 +169,4 @@ document.addEventListener("DOMContentLoaded", () => {
             enableDarkMode();
         }
     });
+});
