@@ -27,7 +27,7 @@ html, body {
     text-align: center;
     padding: 0;
     transition: background 0.3s, color 0.3s;
-    overscroll-behaviour-y: none;
+    overscroll-behavior-y: none;
     overflow-x: hidden;
     overflow-y: hidden;
     white-space: nowrap;
