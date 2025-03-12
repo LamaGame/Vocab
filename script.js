@@ -60,27 +60,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (closestCard) {
+            // Remove selection from all cards
             cards.forEach(card => card.classList.remove("selected"));
+
+            // Add selection effect to centered card
             closestCard.classList.add("selected");
-            selectedLanguage = closestCard.dataset.language; // Store selected language
+
+            // Store the selected language
+            selectedLanguage = closestCard.dataset.language;
         }
     }
 
     // Detect when scrolling stops & update selection
     carousel.addEventListener("scroll", () => {
         clearTimeout(carousel.scrollTimeout);
-        carousel.scrollTimeout = setTimeout(updateSelectedCard, 100);
+        carousel.scrollTimeout = setTimeout(() => {
+            updateSelectedCard();
+        }, 100);
     });
 
-    // Click to center a card, but don't apply selection effect immediately
+    // Click to center a card AND immediately update selection
     cards.forEach(card => {
         card.addEventListener("click", () => {
             card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+
+            // Ensure the selection effect updates immediately on click
+            setTimeout(updateSelectedCard, 300);
         });
     });
 
-    // Initialize selected card on page load
-    updateSelectedCard();
+    // Ensure a card is selected on page load
+    setTimeout(updateSelectedCard, 100);
 
     /* ==================================
        🚀 START LESSON BUTTON
