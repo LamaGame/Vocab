@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const track = document.querySelector(".carousel-track");
     const cards = document.querySelectorAll(".card");
     const startButton = document.getElementById("startLesson");
+    const track = document.querySelector(".news-track");
+    const items = Array.from(track.children);
 
     let selectedLanguage = null;
 
@@ -103,5 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             alert("Bitte wähle eine Sprache aus!");
         }
+    });
+    
+    // Clone items to create a seamless effect
+    items.forEach(item => {
+        const clone = item.cloneNode(true);
+        track.appendChild(clone);
     });
 });
