@@ -23,6 +23,8 @@ html, body {
     justify-content: center;  /* Center horizontally */
     align-items: center;  /* Center vertically */
     transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+    overflow-y: hidden;
     overscroll-behavior-y: none;
 }
 
