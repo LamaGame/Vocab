@@ -145,7 +145,7 @@ body.dark-mode {
     color: var(--text-dark);
 }
 
-.container.dark-mode {
+.dark-mode .container {
     background: var(--container-dark);
 }
 
@@ -205,7 +205,7 @@ body.dark-mode {
 }
 
 /* Dark mode compatibility */
-.news-container.dark-mode {
+.dark-mode .news-container {
     background: var(--container-dark);
     color: var(--text-dark);
 }
