@@ -7,5 +7,5 @@ const vocabulary = {
             noteGerman: "Zusatz", 
             exampleEnglish: "Beispiel Satz" 
         },
-    },
-];
+    ],
+};
