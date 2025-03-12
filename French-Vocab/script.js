@@ -70,42 +70,82 @@ document.addEventListener("DOMContentLoaded", () => {
             .toLowerCase()
             .trim();
     }
+    
+function levenshteinDistance(a, b) {
+    const matrix = [];
 
-    function checkAnswer() {
-        let userAnswer = answerInput.value.trim();
-        let correctAnswer = isFrenchToGerman ? currentWord.german : currentWord.french;
-        
-        let normalizedUserAnswer = normalizeString(userAnswer);
-        let normalizedCorrectAnswer = normalizeString(correctAnswer);
-
-        if (!userAnswer) {
-            resultDisplay.innerHTML = "<span style='color: red;'>Bitte eine Antwort eingeben!</span>";
-            return;
-        }
-
-        if (userAnswer === correctAnswer) {
-            // ✅ Exact match
-            resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
-        } else if (normalizedUserAnswer === normalizedCorrectAnswer) {
-            // 🟠 Accent mistake (normalized matches, but raw doesn't)
-            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Achte auf die Schreibweise! <b>${correctAnswer}</b></span>`;
-        } else if (normalizedCorrectAnswer.includes(normalizedUserAnswer) || normalizedUserAnswer.includes(normalizedCorrectAnswer)) {
-            // 🟠 Close match (e.g., missing a small part)
-            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Korrekte Antwort: <b>${correctAnswer}</b></span>`;
-        } else {
-            // ❌ Incorrect answer
-            resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${correctAnswer}</b></span>`;
-        }
-
-        // Show example sentence if available
-        if (currentWord.exampleFrench) {
-            exampleDisplay.innerHTML = `<i>${currentWord.exampleFrench}</i>`;
-        }
-
-        checkButton.style.display = "none"; // Hide check button after checking answer
-        continueButton.style.display = "block"; // Show continue button
+    for (let i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
+    for (let j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
     }
 
+    for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j - 1] + 1, // Substitution
+                    matrix[i][j - 1] + 1,     // Insertion
+                    matrix[i - 1][j] + 1      // Deletion
+                );
+            }
+        }
+    }
+
+    return matrix[b.length][a.length];
+}
+
+function checkAnswer() {
+    let userAnswer = answerInput.value.trim();
+    let correctAnswer = isFrenchToGerman ? currentWord.german : currentWord.french;
+
+    if (!userAnswer) {
+        resultDisplay.innerHTML = "<span style='color: red;'>Bitte eine Antwort eingeben!</span>";
+        return;
+    }
+
+    let normalizedUserAnswer = normalizeString(userAnswer);
+
+    // Split correct answer into separate valid responses
+    let possibleAnswers = correctAnswer
+        .split(/[,;/]/) // Split at `,`, `;`, `/`
+        .map(part => normalizeString(part.trim())) // Normalize and trim spaces
+        .filter(part => part.length > 0); // Remove empty entries
+
+    let isCorrect = false;
+    let almostCorrect = false;
+
+    for (let validAnswer of possibleAnswers) {
+        let distance = levenshteinDistance(normalizedUserAnswer, validAnswer);
+
+        if (normalizedUserAnswer === validAnswer) {
+            isCorrect = true;
+            break;
+        } else if (distance <= 2) {
+            almostCorrect = true;
+        }
+    }
+
+    if (isCorrect) {
+        resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
+    } else if (almostCorrect) {
+        resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Achte auf die Schreibweise! <b>${correctAnswer}</b></span>`;
+    } else {
+        resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${correctAnswer}</b></span>`;
+    }
+
+    // Show example sentence if available
+    if (currentWord.exampleFrench) {
+        exampleDisplay.innerHTML = `<i>${currentWord.exampleFrench}</i>`;
+    }
+
+    checkButton.style.display = "none"; // Hide check button
+    continueButton.style.display = "block"; // Show continue button
+}
+    
     toggleLanguage.addEventListener("click", () => {
         isFrenchToGerman = !isFrenchToGerman;
         toggleLanguage.innerText = isFrenchToGerman ? "Französisch → Deutsch" : "Deutsch → Französisch";
