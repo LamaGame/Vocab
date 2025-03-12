@@ -30,6 +30,7 @@ html, body {
     overscroll-behaviour-y: none;
     overflow-x: hidden;
     overflow-y: hidden;
+    white-space: nowrap;
 }
 
 /* Container */
