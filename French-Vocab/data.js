@@ -44,14 +44,14 @@ const vocabulary = {
         },
         { 
             french: "un effet", 
-            german: "eine Wirkung, ein Effekt", 
+            german: "eine Wirkung; ein Effekt", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "Les effets d'une alimentation sans sucre sont extraordinaires." 
         },
         { 
             french: "mettre qn en colère", 
-            german: "jdn ärgern, jdn wütend machen", 
+            german: "jdn ärgern; jdn wütend machen", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "Les critiques me mettent en colère." 
@@ -65,7 +65,7 @@ const vocabulary = {
         },
         { 
             french: "surprendre qn", 
-            german: "jdn überraschen, jdn erstaunen", 
+            german: "jdn überraschen; jdn erstaunen", 
             noteFrench: "", 
             noteGerman: "wird wie prendre konjugiert", 
             exampleFrench: "J'adore surprendre mes amis." 
@@ -79,7 +79,7 @@ const vocabulary = {
         },
         { 
             french: "faire", 
-            german: "jdn etw. tun lassen; jdn dazu bringen/zwingen, etw. zu tun", 
+            german: "jdn etw. tun lassen; jdn dazu bringen, etw. zu tun; jdn dazu zwingen, etw. zu tun", 
             noteFrench: "+ inf.", 
             noteGerman: "", 
             exampleFrench: "Cette année, j'aime bien mes cours d'histoire. Ils me font réfléchir." 
@@ -93,14 +93,14 @@ const vocabulary = {
         },
         { 
             french: "sentir qc", 
-            german: "etw. riechen, auch: etw. schmecken", 
+            german: "etw. riechen; etw. schmecken", 
             noteFrench: "", 
             noteGerman: "wird wie sortir konjugiert", 
             exampleFrench: "Ça sent bon." 
         },
         { 
             french: "moderniser qc", 
-            german: "etw. modernisieren, etw. modern umgestalten", 
+            german: "etw. modernisieren; etw. modern umgestalten", 
             noteFrench: "→ moderne", 
             noteGerman: "", 
             exampleFrench: "" 
@@ -134,9 +134,9 @@ const vocabulary = {
             exampleFrench: "Ta musique m'empêche de dormir." 
         },
         { 
-            french: "mentir (à qn)", 
+            french: "mentir", 
             german: "lügen", 
-            noteFrench: "", 
+            noteFrench: "à qn", 
             noteGerman: "wird wie sortir konjugiert", 
             exampleFrench: "Non, ce n'est pas vrai, tu mens !" 
         },
@@ -177,7 +177,7 @@ const vocabulary = {
         },
         { 
             french: "un étage", 
-            german: "ein Stockwerk, eine Etage", 
+            german: "ein Stockwerk; eine Etage", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "On habite au premier étage." 
