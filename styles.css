@@ -165,16 +165,17 @@ button.dark-mode:hover {
     font-weight: bold;
 }
 
-/* Main track that moves */
+/* Track that moves continuously */
 .news-track {
     display: flex;
-    width: 200%; /* Allows smooth wrapping */
+    width: max-content; /* Auto-size to fit content */
     animation: scrollNews 20s linear infinite;
 }
 
 /* Duplicate content ensures seamless scrolling */
 .news-content {
     display: flex;
+    flex-shrink: 0; /* Prevents shrinking */
     white-space: nowrap;
 }
 
@@ -183,10 +184,10 @@ button.dark-mode:hover {
     padding: 0 50px;
 }
 
-/* Scrolling Animation */
+/* Infinite Scrolling Animation */
 @keyframes scrollNews {
     from {
-        transform: translateX(0%);
+        transform: translateX(0);
     }
     to {
         transform: translateX(-50%);
