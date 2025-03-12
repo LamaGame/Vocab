@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         answerInput.value = "";
         resultDisplay.innerHTML = "";
         exampleDisplay.innerHTML = "";
+        checkButton.style.display = "block";
         continueButton.style.display = "none";
         checkButton.disabled = false;
         answerInput.focus();
@@ -101,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
             exampleDisplay.innerHTML = `<i>${currentWord.exampleFrench}</i>`;
         }
 
-        checkButton.disabled = true; // Disable check button after checking answer
+        checkButton.style.display = "none"; // Hide check button after checking answer
         continueButton.style.display = "block"; // Show continue button
     }
 
@@ -141,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container.classList.add("dark-mode");
         cards.forEach(card => card.classList.add("dark-mode"));
         localStorage.setItem("darkMode", "enabled");
-        darkModeToggle.textContent = "☀️ Lichtmodus";
+        darkModeToggle.textContent = "☀️";
     }
 
     function disableDarkMode() {
@@ -149,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container.classList.remove("dark-mode");
         cards.forEach(card => card.classList.remove("dark-mode"));
         localStorage.setItem("darkMode", "disabled");
-        darkModeToggle.textContent = "🌙 Dunkelmodus";
+        darkModeToggle.textContent = "🌙";
     }
 
     // Load dark mode preference
