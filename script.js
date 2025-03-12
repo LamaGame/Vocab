@@ -110,6 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clone items to create a seamless effect
     items.forEach(item => {
         const clone = item.cloneNode(true);
-        track.appendChild(clone);
+        newsTrack.appendChild(clone);
     });
 });
