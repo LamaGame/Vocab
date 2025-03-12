@@ -2,19 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const darkModeToggle = document.getElementById("darkModeToggle");
     const body = document.body;
     const container = document.querySelector(".container");
+    const newsContainer = document.querySelector(".news-container"); // Select news container
     const carousel = document.querySelector(".carousel");
     const track = document.querySelector(".carousel-track");
     const cards = document.querySelectorAll(".card");
     const startButton = document.getElementById("startLesson");
 
     let selectedLanguage = null;
-document.addEventListener("DOMContentLoaded", () => {
-    const darkModeToggle = document.getElementById("darkModeToggle");
-    const body = document.body;
-    const container = document.querySelector(".container");
-    const newsContainer = document.querySelector(".news-container"); // Select news container
 
-    
     /* ============================
        🌙 DARK MODE FUNCTIONALITY
     ============================ */
@@ -47,8 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             enableDarkMode();
         }
     });
-});
-    
+
     /* ==================================
        🎯 DETECT & HIGHLIGHT CENTERED CARD
     ================================== */
