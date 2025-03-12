@@ -179,7 +179,7 @@ body.dark-mode {
 .news-track {
     display: flex;
     justify-content: flex-start;
-    min-width: 100%;
+    min-width: 200%;
     flex-wrap: nowrap;
     animation: scrollNews 30s linear infinite;
 }
