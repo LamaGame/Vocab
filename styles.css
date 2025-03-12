@@ -185,6 +185,7 @@ body.dark-mode {
 
 /* Individual News Items */
 .news-item {
+    display: inline;
     white-space: nowrap;
     animation: scrollItem 10s linear infinite;
 }
@@ -198,3 +199,9 @@ body.dark-mode {
         transform: translateX(-100%);
     }
 }
+
+.dark-mode .news-container {
+    background: var(--container-dark);
+    color: var(--text-dark);
+}
+
