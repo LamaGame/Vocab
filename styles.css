@@ -95,6 +95,7 @@ h1 {
     display: flex;
     gap: 10px;
     padding: 10px 20vw; /* Creates space on both sides */
+    border-radius: 20px;
 }
 
 /* Individual card styling */
