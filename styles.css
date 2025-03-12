@@ -104,7 +104,7 @@ h1 {
     transition: transform 0.3s;
 }
 
-.card:hover {
+.card.selected {
     transform: scale(1.05);
 }
 
