@@ -132,3 +132,45 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeWordQueue();
     displayWord();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const body = document.body;
+    const container = document.querySelector(".container");
+    const cards = document.querySelectorAll(".card");
+    const buttons = document.querySelectorAll("button");
+    const inputs = document.querySelectorAll("input");
+
+    // Load dark mode preference
+    if (localStorage.getItem("darkMode") === "enabled") {
+        enableDarkMode();
+    }
+
+    darkModeToggle.addEventListener("click", () => {
+        if (body.classList.contains("dark-mode")) {
+            disableDarkMode();
+        } else {
+            enableDarkMode();
+        }
+    });
+
+    function enableDarkMode() {
+        body.classList.add("dark-mode");
+        container.classList.add("dark-mode");
+        cards.forEach(card => card.classList.add("dark-mode"));
+        buttons.forEach(button => button.classList.add("dark-mode"));
+        inputs.forEach(input => input.classList.add("dark-mode"));
+        localStorage.setItem("darkMode", "enabled");
+        darkModeToggle.textContent = "☀️ Light Mode";
+    }
+
+    function disableDarkMode() {
+        body.classList.remove("dark-mode");
+        container.classList.remove("dark-mode");
+        cards.forEach(card => card.classList.remove("dark-mode"));
+        buttons.forEach(button => button.classList.remove("dark-mode"));
+        inputs.forEach(input => input.classList.remove("dark-mode"));
+        localStorage.setItem("darkMode", "disabled");
+        darkModeToggle.textContent = "🌙 Dark Mode";
+    }
+});
