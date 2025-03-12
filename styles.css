@@ -92,7 +92,7 @@ h1 {
 .carousel-track {
     display: flex;
     gap: 10px;
-    padding: 10px 20vw; /* Creates space on both sides */
+    padding: 0 20vw; /* Creates space on both sides */
     border-radius: 20px;
 }
 
@@ -128,7 +128,6 @@ h1 {
     color: white;
     border: none;
     padding: 10px 15px;
-    margin-top: 15px;
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.3s;
