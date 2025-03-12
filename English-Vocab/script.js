@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const exampleDisplay = document.getElementById("example");
     const toggleLanguage = document.getElementById("toggleLanguage");
 
-    let currentUnit = "Unité 2"; // Default unit
+    let currentUnit = "Unit 1"; // Default unit
     let isEnglishToGerman = true; // Toggle between directions
     let wordQueue = []; // Holds words without duplicates
     let wordIndex = 0; // Tracks current position in the shuffled list
