@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearTimeout(carousel.scrollTimeout);
         carousel.scrollTimeout = setTimeout(() => {
             updateSelectedCard();
-        }, 100);
+        }, 10);
     });
 
     // Click to center a card AND immediately update selection
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
 
             // Ensure the selection effect updates immediately on click
-            setTimeout(updateSelectedCard, 300);
+            setTimeout(updateSelectedCard, 100);
         });
     });
 
