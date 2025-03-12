@@ -28,7 +28,7 @@ html, body {
     padding: 0;
     transition: background 0.3s, color 0.3s;
     overscroll-behavior-y: none;
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 /* Container */
