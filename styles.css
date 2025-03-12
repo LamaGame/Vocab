@@ -180,14 +180,13 @@ body.dark-mode {
 .news-track {
     display: flex;
     gap: 50px; /* Adjust for spacing between items */
-    animation: scrollNews 10s linear infinite;
+    animation: scrollNews 30s linear infinite;
 }
 
 /* Individual News Items */
 .news-item {
     display: inline;
     white-space: nowrap;
-    animation: scrollItem 10s linear infinite;
 }
 
 /* Keyframe Animation */
