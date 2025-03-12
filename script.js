@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container.classList.add("dark-mode");
         cards.forEach(card => card.classList.add("dark-mode"));
         localStorage.setItem("darkMode", "enabled");
-        darkModeToggle.textContent = "☀️ Lichtmodus";
+        darkModeToggle.textContent = "☀️";
     }
 
     function disableDarkMode() {
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container.classList.remove("dark-mode");
         cards.forEach(card => card.classList.remove("dark-mode"));
         localStorage.setItem("darkMode", "disabled");
-        darkModeToggle.textContent = "🌙 Dunkelmodus";
+        darkModeToggle.textContent = "🌙";
     }
 
     // Load dark mode preference
