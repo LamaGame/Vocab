@@ -1,4 +1,4 @@
-/* Root Variables for Light & Dark Mode */
+Q/* Root Variables for Light & Dark Mode */
 :root {
     --background-light: #f4f4f4;
     --text-light: #333;
@@ -28,11 +28,14 @@ html, body {
     padding: 0;
     transition: background 0.3s, color 0.3s;
     overscroll-behaviour-y: none;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 /* Container */
 .container {
-    max-width: 600px;
+    width: 600px;
+    max-width: 100%;
     background: var(--container-light);
     padding: 20px;
     border-radius: 8px;
@@ -160,12 +163,12 @@ body.dark-mode {
 /* ======= Scrolling News Header ======= */
 .news-container {
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     background: var(--container-light);
     color: var(--text-light);
     white-space: nowrap;
     position: fixed;
-    top: 0px;
+    top: ;
     font-size: 16px;
     font-weight: bold;
 }
