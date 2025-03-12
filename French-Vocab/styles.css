@@ -9,15 +9,35 @@
     --highlight: #007bff;
 }
 
-/* Apply dark mode */
-.dark-mode {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
+/* Position Dark Mode Button at Bottom Right */
+#darkModeToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--highlight);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, transform 0.2s;
+    z-index: 1000; /* Ensure it stays above other elements */
 }
 
-.dark-mode .container {
-    background: var(--container-dark);
-    color: var(--text-dark);
+/* Hover Effect */
+#darkModeToggle:hover {
+    background: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Dark Mode Button in Dark Mode */
+.dark-mode #darkModeToggle {
+    background: #444;
+}
+
+.dark-mode #darkModeToggle:hover {
+    background: #222;
 }
 
 body {
