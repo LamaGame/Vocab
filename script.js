@@ -108,10 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     
     // Clone items to create a seamless effect
-    const newTrack = document.createElement('div').classList.add("news-track");    
+    const newTrack = document.createElement('div');
+    newTrack.classList.add("news-track");
     items.forEach(item => {
         const clone = item.cloneNode(true);
         newTrack.appendChild(clone);
     });
-    document.getElementByClassName('news-container').appendChild(newTrack);
+    document.getElementsByClassName('news-container').appendChild(newTrack);
 });
