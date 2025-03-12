@@ -132,7 +132,7 @@ function checkAnswer() {
     if (isCorrect) {
         resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
     } else if (almostCorrect) {
-        resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Achte auf die Schreibweise! <b>${correctAnswer}</b></span>`;
+        resultDisplay.innerHTML = `<span style='color: green;'>Fast Richtig! Achte auf die Schreibweise! <b>${correctAnswer}</b></span>`;
     } else {
         resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${correctAnswer}</b></span>`;
     }
@@ -148,7 +148,7 @@ function checkAnswer() {
     
     toggleLanguage.addEventListener("click", () => {
         isEnglishToGerman = !isEnglishToGerman;
-        toggleLanguage.innerText = isEnglishToGerman ? "Englisch → Deutsch" : "Deutsch → Englisch
+        toggleLanguage.innerText = isEnglishToGerman ? "Englisch → Deutsch" : "Deutsch → Englisch"
         displayWord();
     });
 
