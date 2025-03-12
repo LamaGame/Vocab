@@ -30,7 +30,6 @@ html, body {
     overscroll-behavior-y: none;
     overflow-x: hidden;
     overflow-y: hidden;
-    white-space: nowrap;
 }
 
 /* Container */
@@ -54,7 +53,6 @@ h1 {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: var(--highlight);
     color: white;
     border: none;
     padding: 10px 15px;
