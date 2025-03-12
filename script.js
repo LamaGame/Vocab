@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const track = document.querySelector(".carousel-track");
     const cards = document.querySelectorAll(".card");
     const startButton = document.getElementById("startLesson");
-    const track = document.querySelector(".news-track");
-    const items = Array.from(track.children);
+    const newsTrack = document.querySelector(".news-track");
+    const items = Array.from(newsTrack.children);
 
     let selectedLanguage = null;
 
