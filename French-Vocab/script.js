@@ -111,7 +111,7 @@ function checkAnswer() {
 
     // Split correct answer into separate valid responses
     let possibleAnswers = correctAnswer
-        .split(/[,;/]/) // Split at `,`, `;`, `/`
+        .split(/[;]/) // Split at `;`
         .map(part => normalizeString(part.trim())) // Normalize and trim spaces
         .filter(part => part.length > 0); // Remove empty entries
 
