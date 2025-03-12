@@ -50,9 +50,12 @@ html, body {
     color: var(--text-dark);
 }
 
-.dark-mode .container,
-.dark-mode .card {
+.dark-mode .container {
     background: var(--container-dark);
+}
+
+.dark-mode .card {
+    background: var(--bg-dark);
 }
 
 .dark-mode button {
@@ -112,7 +115,7 @@ html, body {
     flex: 0 0 auto;
     width: 250px;
     height: 150px;
-    background: var(--container-light);
+    background: var(--bg-light);
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
