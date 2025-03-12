@@ -8,14 +8,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const startButton = document.getElementById("startLesson");
 
     let selectedLanguage = null;
+document.addEventListener("DOMContentLoaded", () => {
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const body = document.body;
+    const container = document.querySelector(".container");
+    const newsContainer = document.querySelector(".news-container"); // Select news container
 
+    
     /* ============================
        🌙 DARK MODE FUNCTIONALITY
     ============================ */
     function enableDarkMode() {
         body.classList.add("dark-mode");
         container.classList.add("dark-mode");
-        cards.forEach(card => card.classList.add("dark-mode"));
+        newsContainer.classList.add("dark-mode"); // Apply dark mode to news ticker
         localStorage.setItem("darkMode", "enabled");
         darkModeToggle.textContent = "☀️";
     }
@@ -23,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function disableDarkMode() {
         body.classList.remove("dark-mode");
         container.classList.remove("dark-mode");
-        cards.forEach(card => card.classList.remove("dark-mode"));
+        newsContainer.classList.remove("dark-mode"); // Remove dark mode from news ticker
         localStorage.setItem("darkMode", "disabled");
         darkModeToggle.textContent = "🌙";
     }
@@ -33,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         enableDarkMode();
     }
 
+    // Toggle dark mode when button is clicked
     darkModeToggle.addEventListener("click", () => {
         if (body.classList.contains("dark-mode")) {
             disableDarkMode();
@@ -40,7 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
             enableDarkMode();
         }
     });
-
+});
+    
     /* ==================================
        🎯 DETECT & HIGHLIGHT CENTERED CARD
     ================================== */
