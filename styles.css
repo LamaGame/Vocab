@@ -178,16 +178,16 @@ body.dark-mode {
 /* News Track (Seamless Scrolling) */
 .news-track {
     display: flex;
-    flex-wrap: nowrap;
-    width: 200%; /* Ensures enough space for looping */
-    animation: scrollNews 20s linear infinite;
+    gap: 2rem;
+    width: max-content;
+    animation: scrollNews 30s linear infinite;
 }
 
 /* Individual News Items */
 .news-item {
     display: inline-block;
     white-space: nowrap;
-    margin-right: 2rem; /* Adjust for spacing */
+    padding: 0 1rem;
 }
 
 /* Keyframe Animation */
@@ -196,7 +196,7 @@ body.dark-mode {
         transform: translateX(0);
     }
     to {
-        transform: translateX(-50%); /* Moves exactly one full track */
+        transform: translateX(-50%);
     }
 }
 
