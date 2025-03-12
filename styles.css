@@ -117,10 +117,11 @@ html, body {
     width: 250px;
     height: 150px;
     background: var(--bg-light);
-    padding: 0 15px;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     scroll-snap-align: center;
     transition: transform 0.5s;
