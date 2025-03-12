@@ -132,7 +132,7 @@ function checkAnswer() {
     if (isCorrect) {
         resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
     } else if (almostCorrect) {
-        resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Achte auf die Schreibweise! <b>${correctAnswer}</b></span>`;
+        resultDisplay.innerHTML = `<span style='color: green;'>Fast richtig! Achte auf die Schreibweise! <b>${correctAnswer}</b></span>`;
     } else {
         resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${correctAnswer}</b></span>`;
     }
