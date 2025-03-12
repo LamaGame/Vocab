@@ -163,6 +163,7 @@ body.dark-mode {
 /* ======= Scrolling News Header ======= */
 .news-container {
     width: 100%;
+    max-width: 100vw;
     overflow-x: hidden;
     background: var(--container-light);
     color: var(--text-light);
