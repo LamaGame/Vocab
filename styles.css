@@ -181,6 +181,7 @@ body.dark-mode {
     display: flex;
     justify-content: space-evenly;
     width: 200%;
+    gap: 50px;
     animation: scrollNews calc(device-width/20) linear infinite;
 }
 
