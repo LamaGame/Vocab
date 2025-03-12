@@ -163,8 +163,7 @@ body.dark-mode {
 /* ======= Scrolling News Header ======= */
 .news-container {
     width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
     background: var(--container-light);
     color: var(--text-light);
     white-space: nowrap;
@@ -173,39 +172,37 @@ body.dark-mode {
     font-size: 16px;
     font-weight: bold;
     padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Track that moves continuously */
 .news-track {
     display: flex;
-    width: 200%;
-    animation: scrollNews 30s linear infinite;
-}
-
-/* Duplicate content ensures seamless scrolling */
-.news-content {
-    display: flex;
-    white-space: nowrap;
-    align-items: center;
+    gap: 50px; /* Space between news items */
+    animation: scrollNews 10s linear infinite;
 }
 
 /* Individual news items */
 .news-item {
+    display: inline-block;
     padding: 0 50px;
+    white-space: nowrap;
 }
 
 /* Infinite Scrolling Animation */
 @keyframes scrollNews {
     from {
-        transform: translateX(0);
+        transform: translateX(100%);
     }
     to {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
     }
 }
 
 /* Dark mode compatibility */
-.dark-mode .news-container {
+.news-container.dark-mode {
     background: var(--container-dark);
     color: var(--text-dark);
 }
