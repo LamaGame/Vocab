@@ -1,53 +1,69 @@
-/* Root Variables for Light & Dark Mode */
+/* ===== Variables for Light & Dark Mode ===== */
 :root {
-    --background-light: #f4f4f4;
+    --bg-light: #f4f4f4;
     --text-light: #333;
     --container-light: white;
-    --button-light: #007bff;
-    --button-hover-light: #0056b3;
-    
-    --background-dark: #1e1e1e;
-    --text-dark: #ffffff;
+    --btn-light: #007bff;
+    --btn-hover-light: #0056b3;
+
+    --bg-dark: #1e1e1e;
+    --text-dark: #fff;
     --container-dark: #2a2a2a;
-    --button-dark: #444;
-    --button-hover-dark: #222;
+    --btn-dark: #444;
+    --btn-hover-dark: #222;
 }
 
-/* Global Styles */
+/* ===== Global Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html, body {
     font-family: Arial, sans-serif;
-    height: 100vh;  /* Ensure the body takes full height of the viewport */
+    height: 100vh;
     width: 100vw;
-    margin: 0;  /* Remove any default margins */
-    display: flex;  /* Enable Flexbox on the body */
-    justify-content: center;  /* Center horizontally */
-    align-items: center;  /* Center vertically */
-    background-color: var(--background-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-light);
     color: var(--text-light);
     text-align: center;
-    padding: 0;
+    overflow-x: hidden;
     transition: background 0.3s, color 0.3s;
-    overscroll-behavior-y: none;
-    overflow-x: auto;
 }
 
-/* Container */
+/* ===== Container ===== */
 .container {
     max-width: 600px;
     width: 90%;
     background: var(--container-light);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Title */
-h1 {
-    margin-bottom: 20px;
+/* ===== Dark Mode ===== */
+.dark-mode {
+    background: var(--bg-dark);
+    color: var(--text-dark);
 }
 
-/* Position Dark Mode Button at Bottom Right */
+.dark-mode .container,
+.dark-mode .card {
+    background: var(--container-dark);
+}
+
+.dark-mode button {
+    background: var(--btn-dark);
+}
+
+.dark-mode button:hover {
+    background: var(--btn-hover-dark);
+}
+
+/* ===== Dark Mode Toggle Button ===== */
 #darkModeToggle {
     position: fixed;
     bottom: 20px;
@@ -55,30 +71,20 @@ h1 {
     color: white;
     border: none;
     padding: 10px 15px;
-    background: var(--button-dark);
+    background: var(--btn-dark);
     cursor: pointer;
     border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background 0.3s, transform 0.2s;
-    z-index: 1000; /* Ensure it stays above other elements */
+    z-index: 1000;
 }
 
-/* Hover Effect */
 #darkModeToggle:hover {
     background: #0056b3;
     transform: scale(1.1);
 }
 
-/* Dark Mode Button in Dark Mode */
-.dark-mode #darkModeToggle {
-    background: #444;
-}
-
-.dark-mode #darkModeToggle:hover {
-    background: #222;
-}
-
-/* Scrollable Card Menu */
+/* ===== Carousel (Horizontal Scroll Menu) ===== */
 .carousel {
     display: flex;
     overflow-x: auto;
@@ -87,16 +93,21 @@ h1 {
     margin: 20px 0;
     justify-content: center;
     border-radius: 20px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-/* Add padding to allow first and last items to be centered */
+.carousel::-webkit-scrollbar {
+    display: none;
+} /* Hide scrollbar in WebKit browsers */
+
 .carousel-track {
     display: flex;
     gap: 10px;
-    padding: 10px 20vw; /* Creates space on both sides */
+    padding: 10px 20vw;
 }
 
-/* Individual card styling */
+/* ===== Cards ===== */
 .card {
     flex: 0 0 auto;
     width: 250px;
@@ -104,11 +115,10 @@ h1 {
     background: var(--container-light);
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: pointer;
     scroll-snap-align: center;
-    white-space: wrap;
     transition: transform 0.5s;
 }
 
@@ -122,9 +132,9 @@ h1 {
     opacity: 0.5;
 }
 
-/* Start Button */
+/* ===== Start Lesson Button ===== */
 #startLesson {
-    background: var(--button-light);
+    background: var(--btn-light);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -134,32 +144,10 @@ h1 {
 }
 
 #startLesson:hover {
-    background: var(--button-hover-light);
+    background: var(--btn-hover-light);
 }
 
-/* Dark Mode */
-body.dark-mode {
-    background-color: var(--background-dark);
-    color: var(--text-dark);
-}
-
-.dark-mode .container {
-    background: var(--container-dark);
-}
-
-.dark-mode .card {
-    background: var(--button-dark);
-}
-
-.dark-mode button {
-    background: var(--button-dark);
-}
-
-.dark-mode button:hover {
-    background: var(--button-hover-dark);
-}
-
-/* News Ticker Container */
+/* ===== News Ticker ===== */
 .news-container {
     width: 100%;
     overflow: hidden;
@@ -175,7 +163,6 @@ body.dark-mode {
     align-items: center;
 }
 
-/* News Track (Seamless Scrolling) */
 .news-track {
     display: flex;
     gap: 2rem;
@@ -183,14 +170,12 @@ body.dark-mode {
     animation: scrollNews 30s linear infinite;
 }
 
-/* Individual News Items */
 .news-item {
     display: inline-block;
     white-space: nowrap;
     padding: 0 1rem;
 }
 
-/* Keyframe Animation */
 @keyframes scrollNews {
     from {
         transform: translateX(0);
@@ -200,7 +185,6 @@ body.dark-mode {
     }
 }
 
-/* Dark Mode */
 .dark-mode .news-container {
     background: var(--container-dark);
     color: var(--text-dark);
