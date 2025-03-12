@@ -159,7 +159,6 @@ body.dark-mode {
 .dark-mode button:hover {
     background: var(--button-hover-dark);
 }
-
 /* News Ticker Container */
 .news-container {
     width: 100%;
@@ -176,35 +175,34 @@ body.dark-mode {
     align-items: center;
 }
 
-/* News Track (Flexible Container) */
+/* News Track (Seamless Scrolling) */
 .news-track {
     display: flex;
     justify-content: flex-start;
-    width: 200%;
-    gap: 12.5%;
+    min-width: 100%;
+    flex-wrap: nowrap;
     animation: scrollNews 30s linear infinite;
 }
 
 /* Individual News Items */
 .news-item {
-    margin: 0 12.5%;
     display: inline-block;
-    width: min-content;
     white-space: nowrap;
+    margin-right: 4rem; /* Adjust for slight spacing between items */
 }
 
 /* Keyframe Animation */
 @keyframes scrollNews {
     from {
-        transform: translateX(100%);
+        transform: translateX(0%);
     }
     to {
         transform: translateX(-100%);
     }
 }
 
+/* Dark Mode */
 .dark-mode .news-container {
     background: var(--container-dark);
     color: var(--text-dark);
 }
-
