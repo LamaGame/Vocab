@@ -10,7 +10,7 @@
 }
 
 /* ======= Light & Dark Mode ======= */
-body {
+html, body {
     font-family: Arial, sans-serif;
     background-color: var(--background-light);
     color: var(--text-light);
