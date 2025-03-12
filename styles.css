@@ -86,14 +86,14 @@ h1 {
     -webkit-overflow-scrolling: touch;
     margin: 20px 0;
     justify-content: center;
+    border-radius: 20px;
 }
 
 /* Add padding to allow first and last items to be centered */
 .carousel-track {
     display: flex;
     gap: 10px;
-    padding: 0 20vw; /* Creates space on both sides */
-    border-radius: 20px;
+    padding: 10px 20vw; /* Creates space on both sides */
 }
 
 /* Individual card styling */
