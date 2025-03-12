@@ -1,32 +1,35 @@
+/* ======= Global Styles ======= */
 :root {
     --background-light: #f4f4f4;
+    --background-dark: #222;
     --text-light: #333;
+    --text-dark: #f4f4f4;
     --container-light: white;
-    --card-light: #f9f9f9;
-    --input-border-light: #ddd;
-    --button-light: #007bff;
-    --button-hover-light: #0056b3;
-
-    --background-dark: #1e1e1e;
-    --text-dark: #ffffff;
-    --container-dark: #2a2a2a;
-    --card-dark: #333;
-    --input-border-dark: #555;
-    --button-dark: #444;
-    --button-hover-dark: #222;
+    --container-dark: #333;
+    --highlight: #007bff;
 }
 
-/* Default Light Mode */
+/* Apply dark mode */
+.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.dark-mode .container {
+    background: var(--container-dark);
+    color: var(--text-dark);
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: var(--background-light);
-    color: var(--text-light);
     text-align: center;
     margin: 0;
     padding: 20px;
     transition: background 0.3s, color 0.3s;
 }
 
+/* ======= Container Styles ======= */
 .container {
     max-width: 500px;
     background: var(--container-light);
@@ -34,13 +37,25 @@ body {
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     margin: auto;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s;
 }
 
+/* Dark mode container */
+.dark-mode .container {
+    background: var(--container-dark);
+    color: var(--text-dark);
+}
+
+/* ======= Heading Styles ======= */
 h1 {
     color: var(--text-light);
 }
 
+.dark-mode h1 {
+    color: var(--text-dark);
+}
+
+/* ======= Label & Select Styles ======= */
 label {
     font-weight: bold;
 }
@@ -53,12 +68,11 @@ select {
     font-size: 12px;
     cursor: pointer;
     appearance: none;
-    background: var(--container-light);
-    color: var(--text-light);
 }
 
+/* ======= Button Styles ======= */
 button {
-    background-color: var(--button-light);
+    background-color: var(--highlight);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -69,47 +83,73 @@ button {
 }
 
 button:hover {
-    background-color: var(--button-hover-light);
+    background-color: #0056b3;
 }
 
+/* Dark mode button */
+.dark-mode button {
+    background-color: var(--highlight);
+    color: white;
+}
+
+.dark-mode button:hover {
+    background-color: #0056b3;
+}
+
+/* ======= Card Styling ======= */
 .card {
-    background: var(--card-light);
+    background: var(--container-light);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     width: 90%;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s;
 }
 
+.dark-mode .card {
+    background: var(--container-dark);
+    color: var(--text-dark);
+}
+
+/* ======= Input Field ======= */
 input {
     width: 80%;
     padding: 10px;
     margin: 10px;
-    border: 1px solid var(--input-border-light);
+    border: 1px solid #ddd;
     border-radius: 5px;
-    background: var(--container-light);
-    color: var(--text-light);
-    transition: background 0.3s, border 0.3s;
+    transition: background 0.3s, color 0.3s;
 }
 
+/* Dark mode input field */
+.dark-mode input {
+    background: #444;
+    color: white;
+    border: 1px solid #666;
+}
+
+/* ======= Word Display ======= */
 #word {
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
+/* Result Section */
 #result {
     font-size: 1.2em;
     margin-top: 10px;
 }
 
+/* Centering Continue Button */
 #continue {
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;
 }
 
+/* Example Sentence Styling */
 #example {
     font-style: italic;
     color: gray;
@@ -117,30 +157,94 @@ input {
     font-size: 1.2rem;
 }
 
-/* Dark Mode */
-body.dark-mode {
-    background-color: var(--background-dark);
+/* ======= Carousel Styles ======= */
+.carousel-container {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    overflow: hidden; /* Hides overflow */
+    margin: auto;
+}
+
+/* Fading effect on edges */
+.carousel-container::before,
+.carousel-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 10%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+/* Dark mode fade effect */
+.dark-mode .carousel-container::before {
+    background: linear-gradient(to right, rgba(34, 34, 34, 1), rgba(34, 34, 34, 0));
+}
+
+.dark-mode .carousel-container::after {
+    background: linear-gradient(to left, rgba(34, 34, 34, 1), rgba(34, 34, 34, 0));
+}
+
+/* Carousel Track */
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hides scrollbar */
+}
+
+.carousel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers */
+}
+
+/* Padding to allow centering */
+.carousel-track {
+    display: flex;
+    gap: 15px;
+    padding: 10px 20vw;
+}
+
+/* Individual Cards */
+.card {
+    flex: 0 0 auto;
+    width: 250px;
+    height: 150px;
+    background: var(--container-light);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    scroll-snap-align: center;
+    transition: transform 0.3s, background 0.3s, color 0.3s;
+}
+
+/* Highlight the Selected Card */
+.card.selected {
+    background: var(--highlight);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Dark mode card styling */
+.dark-mode .card {
+    background: var(--container-dark);
     color: var(--text-dark);
 }
 
-.container.dark-mode {
-    background: var(--container-dark);
-}
-
-.card.dark-mode {
-    background: var(--card-dark);
-}
-
-button.dark-mode {
-    background-color: var(--button-dark);
-}
-
-button.dark-mode:hover {
-    background-color: var(--button-hover-dark);
-}
-
-input.dark-mode {
-    background: var(--container-dark);
-    color: var(--text-dark);
-    border: 1px solid var(--input-border-dark);
+.dark-mode .card.selected {
+    background: var(--highlight);
 }
