@@ -14,13 +14,15 @@
 }
 
 /* Global Styles */
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;  /* Ensure the body takes full height of the viewport */
+    margin: 0;  /* Remove any default margins */
+    display: flex;  /* Enable Flexbox on the body */
+    justify-content: center;  /* Center horizontally */
+    align-items: center;  /* Center vertically */
     background-color: var(--background-light);
     color: var(--text-light);
     text-align: center;
-    margin: 0;
-    padding: o;
     padding: 20px;
     transition: background 0.3s, color 0.3s;
 }
@@ -32,7 +34,6 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin: auto;
     transition: background 0.3s;
 }
 
