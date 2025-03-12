@@ -176,35 +176,19 @@ body.dark-mode {
     align-items: center;
 }
 
-/* News Ticker Container */
-.news-container {
-    width: 100%;
-    overflow: hidden;
-    background: var(--container-light);
-    color: var(--text-light);
-    white-space: nowrap;
-    position: fixed;
-    top: 0;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
-}
-
 /* News Track (Seamless Scrolling) */
 .news-track {
     display: flex;
     flex-wrap: nowrap;
-    width: max-content; /* Allow content to extend dynamically */
-    animation: scrollNews 20s linear infinite; /* Adjust speed */
+    width: 200%; /* Ensures enough space for looping */
+    animation: scrollNews 20s linear infinite;
 }
 
 /* Individual News Items */
 .news-item {
     display: inline-block;
     white-space: nowrap;
-    margin-right: 2rem; /* Space between items */
+    margin-right: 2rem; /* Adjust for spacing */
 }
 
 /* Keyframe Animation */
@@ -213,7 +197,7 @@ body.dark-mode {
         transform: translateX(0);
     }
     to {
-        transform: translateX(-50%);
+        transform: translateX(-50%); /* Moves exactly one full track */
     }
 }
 
