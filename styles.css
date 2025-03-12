@@ -34,7 +34,7 @@ html, body {
 /* Container */
 .container {
     max-width: 600px;
-    width: 100%;
+    width: 90%;
     background: var(--container-light);
     padding: 20px;
     border-radius: 8px;
@@ -182,7 +182,7 @@ body.dark-mode {
     justify-content: space-evenly;
     width: 200%;
     gap: 50px;
-    animation: scrollNews calc(device-width/20) linear infinite;
+    animation: scrollNews 30s linear infinite;
 }
 
 /* Individual News Items */
