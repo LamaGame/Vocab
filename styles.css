@@ -15,6 +15,7 @@
 
 /* Global Styles */
 html, body {
+    font-family: Arial, sans-serif;
     height: 100vh;  /* Ensure the body takes full height of the viewport */
     width: 100vw;
     margin: 0;  /* Remove any default margins */
