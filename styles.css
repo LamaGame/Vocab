@@ -180,7 +180,7 @@ body.dark-mode {
 .news-track {
     display: flex;
     justify-content: space-evenly;
-    width: 100vw;
+    width: 200%;
     animation: scrollNews 30s linear infinite;
 }
 
