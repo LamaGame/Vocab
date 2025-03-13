@@ -65,6 +65,7 @@ h1 {
     align-items: center;
     margin-bottom: 20px;
     position: relative;
+    justify-self: center;
     width: 80%;
 }
 
