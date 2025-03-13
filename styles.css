@@ -31,6 +31,7 @@ html, body {
     color: var(--text-light);
     text-align: center;
     overflow-x: hidden;
+    overscroll-behavior-y: contain;
     transition: background 0.3s, color 0.3s;
 }
 
