@@ -1,33 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const unitSelect = document.getElementById("unitSelect");
+    const pageMinInput = document.getElementById("pageMin");
+    const pageMaxInput = document.getElementById("pageMax");
+    const pageMinValue = document.getElementById("pageMinValue");
+    const pageMaxValue = document.getElementById("pageMaxValue");
     const wordDisplay = document.getElementById("word");
     const answerInput = document.getElementById("answer");
     const checkButton = document.getElementById("check");
-    const continueButton = document.getElementById("continue"); // New button
+    const continueButton = document.getElementById("continue");
     const resultDisplay = document.getElementById("result");
     const exampleDisplay = document.getElementById("example");
     const toggleLanguage = document.getElementById("toggleLanguage");
 
-    let currentUnit = "Unit 1"; // Default unit
-    let isEnglishToGerman = true; // Toggle between directions
-    let wordQueue = []; // Holds words without duplicates
-    let wordIndex = 0; // Tracks current position in the shuffled list
-    let currentWord = null; // Store the current word
+    let selectedPageMin = parseInt(pageMinInput.value);
+    let selectedPageMax = parseInt(pageMaxInput.value);
+    let isEnglishToGerman = true;
+    let wordQueue = [];
+    let wordIndex = 0;
+    let currentWord = null;
 
-    function populateUnitSelect() {
-        for (let unit in vocabulary) {
-            let option = document.createElement("option");
-            option.value = unit;
-            option.textContent = unit;
-            unitSelect.appendChild(option);
-        }
-        unitSelect.value = currentUnit;
+    // Update displayed page range values
+    function updatePageValues() {
+        selectedPageMin = Math.min(parseInt(pageMinInput.value), parseInt(pageMaxInput.value));
+        selectedPageMax = Math.max(parseInt(pageMinInput.value), parseInt(pageMaxInput.value));
+
+        pageMinValue.textContent = selectedPageMin;
+        pageMaxValue.textContent = selectedPageMax;
+
+        initializeWordQueue(); // Refresh word queue when range changes
+        displayWord();
     }
 
+    // Initialize word queue based on selected page range
     function initializeWordQueue() {
-        wordQueue = [...vocabulary[currentUnit]]; // Copy words from vocabulary
+        wordQueue = [];
+        for (let page = selectedPageMin; page <= selectedPageMax; page++) {
+            if (vocabulary[page]) {
+                wordQueue = wordQueue.concat(vocabulary[page]);
+            }
+        }
         shuffleWords();
-        wordIndex = 0; // Reset index
+        wordIndex = 0;
     }
 
     function shuffleWords() {
@@ -39,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getNextWord() {
         if (wordIndex >= wordQueue.length) {
-            shuffleWords(); // Reshuffle when the list is exhausted
+            shuffleWords();
             wordIndex = 0;
         }
         return wordQueue[wordIndex++];
@@ -53,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let noteText = isEnglishToGerman ? currentWord.noteEnglish : currentWord.noteGerman;
 
         wordDisplay.innerHTML = `${wordText} <i style="color:gray;">${noteText ? "(" + noteText + ")" : ""}</i>`;
-        
+
         answerInput.value = "";
         resultDisplay.innerHTML = "";
         exampleDisplay.innerHTML = "";
@@ -65,98 +77,93 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function normalizeString(str) {
         return str
-            .normalize("NFD") // Decomposes accents
-            .replace(/[\u0300-\u036f]/g, "") // Removes accents
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
             .toLowerCase()
             .trim();
     }
-    
-function levenshteinDistance(a, b) {
-    const matrix = [];
 
-    for (let i = 0; i <= b.length; i++) {
-        matrix[i] = [i];
-    }
-    for (let j = 0; j <= a.length; j++) {
-        matrix[0][j] = j;
-    }
+    function levenshteinDistance(a, b) {
+        const matrix = [];
 
-    for (let i = 1; i <= b.length; i++) {
-        for (let j = 1; j <= a.length; j++) {
-            if (b.charAt(i - 1) === a.charAt(j - 1)) {
-                matrix[i][j] = matrix[i - 1][j - 1];
-            } else {
-                matrix[i][j] = Math.min(
-                    matrix[i - 1][j - 1] + 1, // Substitution
-                    matrix[i][j - 1] + 1,     // Insertion
-                    matrix[i - 1][j] + 1      // Deletion
-                );
+        for (let i = 0; i <= b.length; i++) {
+            matrix[i] = [i];
+        }
+        for (let j = 0; j <= a.length; j++) {
+            matrix[0][j] = j;
+        }
+
+        for (let i = 1; i <= b.length; i++) {
+            for (let j = 1; j <= a.length; j++) {
+                if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } else {
+                    matrix[i][j] = Math.min(
+                        matrix[i - 1][j - 1] + 1,
+                        matrix[i][j - 1] + 1,
+                        matrix[i - 1][j] + 1
+                    );
+                }
             }
         }
+
+        return matrix[b.length][a.length];
     }
 
-    return matrix[b.length][a.length];
-}
+    function checkAnswer() {
+        let userAnswer = answerInput.value.trim();
+        let correctAnswer = isEnglishToGerman ? currentWord.german : currentWord.english;
 
-function checkAnswer() {
-    let userAnswer = answerInput.value.trim();
-    let correctAnswer = isEnglishToGerman ? currentWord.german : currentWord.english;
-
-    if (!userAnswer) {
-        resultDisplay.innerHTML = "<span style='color: red;'>Bitte eine Antwort eingeben!</span>";
-        return;
-    }
-
-    let normalizedUserAnswer = normalizeString(userAnswer);
-
-    // Split correct answer into separate valid responses
-    let possibleAnswers = correctAnswer
-        .split(/[;]/) // Split at `,`, `;`, `/`
-        .map(part => normalizeString(part.trim())) // Normalize and trim spaces
-        .filter(part => part.length > 0); // Remove empty entries
-
-    let isCorrect = false;
-    let almostCorrect = false;
-
-    for (let validAnswer of possibleAnswers) {
-        let distance = levenshteinDistance(normalizedUserAnswer, validAnswer);
-
-        if (normalizedUserAnswer === validAnswer) {
-            isCorrect = true;
-            break;
-        } else if (distance <= 2) {
-            almostCorrect = true;
+        if (!userAnswer) {
+            resultDisplay.innerHTML = "<span style='color: red;'>Bitte eine Antwort eingeben!</span>";
+            return;
         }
+
+        let normalizedUserAnswer = normalizeString(userAnswer);
+
+        let possibleAnswers = correctAnswer
+            .split(/[;]/)
+            .map(part => normalizeString(part.trim()))
+            .filter(part => part.length > 0);
+
+        let isCorrect = false;
+        let almostCorrect = false;
+
+        for (let validAnswer of possibleAnswers) {
+            let distance = levenshteinDistance(normalizedUserAnswer, validAnswer);
+
+            if (normalizedUserAnswer === validAnswer) {
+                isCorrect = true;
+                break;
+            } else if (distance <= 2) {
+                almostCorrect = true;
+            }
+        }
+
+        if (isCorrect) {
+            resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
+        } else if (almostCorrect) {
+            resultDisplay.innerHTML = `<span style='color: orange;'>Fast richtig! Achte auf die Schreibweise! <b>${correctAnswer}</b></span>`;
+        } else {
+            resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${correctAnswer}</b></span>`;
+        }
+
+        if (currentWord.exampleEnglish) {
+            exampleDisplay.innerHTML = `<i>${currentWord.exampleEnglish}</i>`;
+        }
+
+        checkButton.style.display = "none";
+        continueButton.style.display = "block";
     }
 
-    if (isCorrect) {
-        resultDisplay.innerHTML = "<span style='color: green;'>Richtig!</span>";
-    } else if (almostCorrect) {
-        resultDisplay.innerHTML = `<span style='color: green;'>Fast Richtig! Achte auf die Schreibweise! <b>${correctAnswer}</b></span>`;
-    } else {
-        resultDisplay.innerHTML = `<span style='color: red;'>Falsch! Die richtige Antwort ist: <b>${correctAnswer}</b></span>`;
-    }
-
-    // Show example sentence if available
-    if (currentWord.exampleEnglish) {
-        exampleDisplay.innerHTML = `<i>${currentWord.exampleEnglish}</i>`;
-    }
-
-    checkButton.style.display = "none"; // Hide check button
-    continueButton.style.display = "block"; // Show continue button
-}
-    
     toggleLanguage.addEventListener("click", () => {
         isEnglishToGerman = !isEnglishToGerman;
-        toggleLanguage.innerText = isEnglishToGerman ? "Englisch → Deutsch" : "Deutsch → Englisch"
+        toggleLanguage.innerText = isEnglishToGerman ? "Englisch → Deutsch" : "Deutsch → Englisch";
         displayWord();
     });
 
-    unitSelect.addEventListener("change", () => {
-        currentUnit = unitSelect.value;
-        initializeWordQueue();
-        displayWord();
-    });
+    pageMinInput.addEventListener("input", updatePageValues);
+    pageMaxInput.addEventListener("input", updatePageValues);
 
     checkButton.addEventListener("click", checkAnswer);
     answerInput.addEventListener("keypress", (e) => {
@@ -165,23 +172,20 @@ function checkAnswer() {
         }
     });
 
-    continueButton.addEventListener("click", () => {
-        displayWord();
-    });
+    continueButton.addEventListener("click", displayWord);
 
-    populateUnitSelect();
-    initializeWordQueue();
+    updatePageValues();
     displayWord();
 });
 
+/* ============================
+   🌙 DARK MODE FUNCTIONALITY
+============================ */
 document.addEventListener("DOMContentLoaded", () => {
     const darkModeToggle = document.getElementById("darkModeToggle");
     const body = document.body;
     const container = document.querySelector(".container");
 
-    /* ============================
-       🌙 DARK MODE FUNCTIONALITY
-    ============================ */
     function enableDarkMode() {
         body.classList.add("dark-mode");
         container.classList.add("dark-mode");
@@ -196,12 +200,10 @@ document.addEventListener("DOMContentLoaded", () => {
         darkModeToggle.textContent = "🌙";
     }
 
-    // Load dark mode preference
     if (localStorage.getItem("darkMode") === "enabled") {
         enableDarkMode();
     }
 
-    // Toggle dark mode when button is clicked
     darkModeToggle.addEventListener("click", () => {
         if (body.classList.contains("dark-mode")) {
             disableDarkMode();
