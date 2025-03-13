@@ -10,10 +10,16 @@
     <a href="../index.html" style="position: fixed; top: 20px; left: 20px; background: #007bff; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-family: Arial, sans-serif;">Zurück</a>
     <div class="container">
         <h1>Französisch Vokabeltrainer</h1>
-        
-        <!-- Dropdown to select the unit -->
-        <label for="unitSelect">Lerneinheit wählen:</label>
-        <select id="unitSelect"></select>
+
+        <!-- Page Range Selection (Dual Slider) -->
+        <div class="page-slider">
+            <label for="pageRange">Seitenbereich:</label>
+            <input type="range" id="pageMin" min="235" max="250" value="235">
+            <input type="range" id="pageMax" min="235" max="250" value="250">
+            <div class="page-values">
+                <span id="pageMinValue">235</span> - <span id="pageMaxValue">250</span>
+            </div>
+        </div>
 
         <!-- Toggle button for switching between French → German and vice versa -->
         <button id="toggleLanguage">Französisch → Deutsch</button>
@@ -33,7 +39,7 @@
     </div>
     
     <!-- Dunkelmodus-Umschalter -->
-        <button id="darkModeToggle">🌙</button>
+    <button id="darkModeToggle">🌙</button>
 
     <script src="data.js"></script>
     <script src="script.js"></script>
