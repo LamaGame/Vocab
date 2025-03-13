@@ -64,6 +64,8 @@ h1 {
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    position: relative;
+    width: 80%;
 }
 
 .page-slider label {
@@ -71,18 +73,37 @@ h1 {
     margin-bottom: 5px;
 }
 
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 24px; /* Increased height for better interaction */
+}
+
 .page-slider input[type="range"] {
-    width: 80%;
-    margin: 10px 0;
+    position: absolute;
+    width: 100%;
+    height: 6px;
     -webkit-appearance: none;
     appearance: none;
-    height: 6px;
     background: #ddd;
     outline: none;
     border-radius: 5px;
     transition: background 0.3s;
+    pointer-events: none; /* Prevent direct interaction */
 }
 
+/* Enable pointer events only for the active slider */
+.page-slider input[type="range"]:first-child {
+    pointer-events: auto;
+    z-index: 2;
+}
+
+.page-slider input[type="range"]:last-child {
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* Thumb Styles */
 .page-slider input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -91,6 +112,9 @@ h1 {
     background: var(--highlight);
     border-radius: 50%;
     cursor: pointer;
+    position: relative;
+    z-index: 3;
+    pointer-events: auto;
 }
 
 .page-slider input[type="range"]::-moz-range-thumb {
@@ -99,11 +123,15 @@ h1 {
     background: var(--highlight);
     border-radius: 50%;
     cursor: pointer;
+    position: relative;
+    z-index: 3;
+    pointer-events: auto;
 }
 
 .page-values {
     font-size: 16px;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 /* Dark Mode for Page Slider */
@@ -111,10 +139,7 @@ h1 {
     background: #666;
 }
 
-.dark-mode .page-slider input[type="range"]::-webkit-slider-thumb {
-    background: var(--highlight);
-}
-
+.dark-mode .page-slider input[type="range"]::-webkit-slider-thumb,
 .dark-mode .page-slider input[type="range"]::-moz-range-thumb {
     background: var(--highlight);
 }
