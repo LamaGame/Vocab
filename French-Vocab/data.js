@@ -1,5 +1,5 @@
 const vocabulary = {
-    168: [
+    "Unité 2": [
         { 
             french: "le mode de vie", 
             german: "die Lebensweise", 
@@ -44,14 +44,14 @@ const vocabulary = {
         },
         { 
             french: "un effet", 
-            german: "eine Wirkung, ein Effekt", 
+            german: "eine Wirkung; ein Effekt", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "Les effets d'une alimentation sans sucre sont extraordinaires." 
         },
         { 
             french: "mettre qn en colère", 
-            german: "jdn ärgern, jdn wütend machen", 
+            german: "jdn ärgern; jdn wütend machen", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "Les critiques me mettent en colère." 
@@ -65,7 +65,7 @@ const vocabulary = {
         },
         { 
             french: "surprendre qn", 
-            german: "jdn überraschen, jdn erstaunen", 
+            german: "jdn überraschen; jdn erstaunen", 
             noteFrench: "", 
             noteGerman: "wird wie prendre konjugiert", 
             exampleFrench: "J'adore surprendre mes amis." 
@@ -86,7 +86,7 @@ const vocabulary = {
         },
         { 
             french: "faire", 
-            german: "jdn etw. tun lassen; jdn dazu bringen/zwingen, etw. zu tun", 
+            german: "jdn etw. tun lassen; jdn dazu bringen, etw. zu tun; jdn dazu zwingen, etw. zu tun", 
             noteFrench: "+ inf.", 
             noteGerman: "", 
             exampleFrench: "Cette année, j'aime bien mes cours d'histoire. Ils me font réfléchir." 
@@ -121,7 +121,7 @@ const vocabulary = {
         },
         { 
             french: "moderniser qc", 
-            german: "etw. modernisieren, etw. modern umgestalten", 
+            german: "etw. modernisieren; etw. modern umgestalten", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "→ moderne" 
@@ -156,14 +156,14 @@ const vocabulary = {
         },
         { 
             french: "ailleurs", 
-            german: "anderswo, woandershin", 
+            german: "anderswo; woandershin", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "Est-ce que tu voudrais vivre ailleurs ?" 
         },
         { 
             french: "être à table", 
-            german: "am (Ess-)Tisch sitzen, bei Tisch sein", 
+            german: "am Tisch sitzen; am Esstisch sitzen; bei Tisch sein", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "Le soir, quand on est à table, on raconte notre journée !" 
@@ -177,9 +177,9 @@ const vocabulary = {
         },
         { 
             french: "sentir qc", 
-            german: "etw. riechen, auch: etw. schmecken", 
+            german: "etw. riechen; auch: etw. schmecken", 
             noteFrench: "", 
-            noteGerman: "wird wie sortir konjugiert", 
+            noteGerman: "wird comme sortir konjugiert", 
             exampleFrench: "ça sent" 
         },
         { 
@@ -205,7 +205,7 @@ const vocabulary = {
         },
         { 
             french: "empêcher qn/qc de", 
-            german: "jdn/etw. daran hindern, etw. zu tun", 
+            german: "jdn/etw. daran hindern; etw. zu tun", 
             noteFrench: "+ inf.", 
             noteGerman: "", 
             exampleFrench: "Ta musique m'empêche de dormir." 
@@ -233,7 +233,7 @@ const vocabulary = {
         },
         { 
             french: "voici", 
-            german: "hier ist/sind", 
+            german: "hier ist; hier sind", 
             noteFrench: "= voilà", 
             noteGerman: "", 
             exampleFrench: "" 
@@ -247,28 +247,28 @@ const vocabulary = {
         },
         { 
             french: "prochain/prochaine", 
-            german: "nächster, nächste, nächstes", 
+            german: "nächster; nächste; nächstes", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "Samedi prochain, nous partons en vacances." 
         },
         { 
             french: "spécial/spéciale/spéciaux/spéciales", 
-            german: "besonders, speziell", 
+            german: "besonders; speziell", 
             noteFrench: "→ se spécialiser", 
             noteGerman: "", 
             exampleFrench: "" 
         },
         { 
             french: "le produit", 
-            german: "das Produkt, die Ware", 
+            german: "das Produkt; die Ware", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "Ce sont des produits de la région." 
         },
         { 
             french: "produire qc", 
-            german: "etw. produzieren, herstellen, erzeugen", 
+            german: "etw. produzieren; etw. herstellen; etw. erzeugen", 
             noteFrench: "→ le produit", 
             noteGerman: "wird wie construire konjugiert", 
             exampleFrench: "Dans notre région, on produit beaucoup de fromages." 
@@ -282,7 +282,7 @@ const vocabulary = {
         },
         { 
             french: "un immeuble", 
-            german: "ein (Wohn-)Haus", 
+            german: "ein Haus; ein Wohnhaus", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "J'habite dans un immeuble." 
@@ -303,7 +303,7 @@ const vocabulary = {
         },
         { 
             french: "la réputation", 
-            german: "der Ruf, das Ansehen", 
+            german: "der Ruf; das Ansehen", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "Ce collège a une bonne réputation." 
@@ -317,7 +317,7 @@ const vocabulary = {
         },
         { 
             french: "un étage", 
-            german: "ein Stockwerk, eine Etage", 
+            german: "ein Stockwerk; eine Etage", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "On habite au premier étage." 
