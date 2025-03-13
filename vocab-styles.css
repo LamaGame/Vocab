@@ -24,7 +24,6 @@ html, body {
     align-items: center;
     transition: background 0.3s, color 0.3s;
     overflow-x: hidden;
-    overflow-y: hidden;
     overscroll-behavior-y: none;
 }
 
