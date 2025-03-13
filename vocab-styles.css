@@ -58,6 +58,71 @@ h1 {
     color: var(--text-dark);
 }
 
+/* ======= Page Range Slider ======= */
+.page-slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.page-slider label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.page-slider input[type="range"] {
+    width: 80%;
+    margin: 10px 0;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: #ddd;
+    outline: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.page-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--highlight);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.page-slider input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--highlight);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.page-values {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Dark Mode for Page Slider */
+.dark-mode .page-slider input[type="range"] {
+    background: #666;
+}
+
+.dark-mode .page-slider input[type="range"]::-webkit-slider-thumb {
+    background: var(--highlight);
+}
+
+.dark-mode .page-slider input[type="range"]::-moz-range-thumb {
+    background: var(--highlight);
+}
+
+.dark-mode .page-values {
+    color: var(--text-dark);
+}
+
 /* ======= Input Field ======= */
 input {
     width: 80%;
