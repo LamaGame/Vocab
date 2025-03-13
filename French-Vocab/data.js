@@ -1,5 +1,5 @@
 const vocabulary = {
-    "Unité 2": [
+    168: [
         { 
             french: "le mode de vie", 
             german: "die Lebensweise", 
@@ -156,7 +156,7 @@ const vocabulary = {
         },
         { 
             french: "un immeuble", 
-            german: "ein (Wohn-)Haus", 
+            german: "ein Haus; ein Wohnhaus", 
             noteFrench: "", 
             noteGerman: "", 
             exampleFrench: "J'habite dans un immeuble." 
