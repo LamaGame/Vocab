@@ -167,6 +167,8 @@ h1 {
 /* ======= Input Field ======= */
 input {
     width: 80%;
+    min-width: 200px;
+    max-width: 400px;
     padding: 10px;
     margin: 10px;
     border: 1px solid #ddd;
