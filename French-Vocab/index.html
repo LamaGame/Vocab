@@ -14,10 +14,10 @@
         <!-- Page Range Selection (Dual Slider) -->
         <div class="page-slider">
             <label for="pageRange">Seitenbereich:</label>
-            <input type="range" id="pageMin" min="168" max="168" value="168">
-            <input type="range" id="pageMax" min="168" max="168" value="168">
+            <input type="range" id="pageMin" min="168" max="170" value="168">
+            <input type="range" id="pageMax" min="168" max="170" value="168">
             <div class="page-values">
-                p.<span id="pageMinValue">235</span> - p.<span id="pageMaxValue">250</span>
+                p.<span id="pageMinValue"></span> &nbsp;— &nbsp;p.<span id="pageMaxValue"></span>
             </div>
         </div>
 
@@ -28,11 +28,12 @@
         <div class="card">
             <p id="word">Wort wird geladen...</p>
             <input type="text" id="answer" placeholder="Übersetzung eingeben">
-            <!-- Example sentence displayed after checking the answer -->
-            <p id="example"></p>
             <button id="check">Prüfen</button>
             <button id="continue" style="display: none;">Weiter</button>
         </div>
+        
+        <!-- Example sentence displayed after checking the answer -->
+            <p id="example"></p>
 
         <!-- Result of the answer -->
         <p id="result"></p> 
