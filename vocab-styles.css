@@ -25,6 +25,7 @@ html, body {
     align-items: center;
     transition: background 0.3s, color 0.3s;
     overflow-x: hidden;
+    overflow-y: hidden;
     overscroll-behavior-y: none;
 }
 
@@ -258,4 +259,10 @@ button:hover {
 
 .dark-mode #darkModeToggle:hover {
     background: #222;
+}
+
+@media only screen and (max-width: 600px) {
+    html, body {
+        overflow-y: auto;
+    }
 }
