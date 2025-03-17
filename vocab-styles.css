@@ -189,6 +189,8 @@ input {
     font-weight: bold;
     margin-bottom: 10px;
     width: 80%;
+    min-width: 200px;
+    max-width: 300px;
 }
 
 #result {
@@ -205,7 +207,7 @@ input {
 }
 
 #continue {
-    justify-self: center;
+    margin-inline: 50%;
 }
 
 /* ======= Buttons ======= */
