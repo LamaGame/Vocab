@@ -205,7 +205,7 @@ const vocabulary = {
         },
         { 
             french: "empêcher qn/qc de", 
-            german: "jdn/etw. daran hindern; etw. zu tun", 
+            german: "jdn/etw. daran hindern, etw. zu tun", 
             noteFrench: "+ inf.", 
             noteGerman: "", 
             exampleFrench: "Ta musique m'empêche de dormir." 
@@ -213,7 +213,7 @@ const vocabulary = {
         { 
             french: "mentir", 
             german: "lügen", 
-            noteFrench: "(à qn)", 
+            noteFrench: "à qn", 
             noteGerman: "wird wie sortir konjugiert", 
             exampleFrench: "Non, ce n'est pas vrai, tu mens !" 
         },
