@@ -206,8 +206,9 @@ input {
     font-size: 1.2rem;
 }
 
-#continue {
-    align-self: center;
+#check, #continue {
+    width: 60%;
+    margin-inline: 20%;
 }
 
 /* ======= Buttons ======= */
