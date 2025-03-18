@@ -266,7 +266,7 @@ button:hover {
     background: #222;
 }
 
-@media only screen and (max-height: 700px) {
+@media only screen and (max-height: 500px) {
     html, body {
         overflow-y: auto;
     }
