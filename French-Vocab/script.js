@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let wordIndex = 0;
     let currentWord = null;
 
-    // Update displayed page range values
     function updatePageValues() {
         selectedPageMin = Math.min(parseInt(pageMinInput.value), parseInt(pageMaxInput.value));
         selectedPageMax = Math.max(parseInt(pageMinInput.value), parseInt(pageMaxInput.value));
@@ -26,11 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
         pageMinValue.textContent = selectedPageMin;
         pageMaxValue.textContent = selectedPageMax;
 
-        initializeWordQueue(); // Refresh word queue when range changes
+        initializeWordQueue();
         displayWord();
     }
 
-    // Initialize word queue based on selected page range
     function initializeWordQueue() {
         wordQueue = [];
         for (let page = selectedPageMin; page <= selectedPageMax; page++) {
@@ -67,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         wordDisplay.innerHTML = `${wordText} <i style="color:gray;">${noteText ? "(" + noteText + ")" : ""}</i>`;
 
         answerInput.value = "";
+        answerInput.disabled = false; // Re-enable input
         resultDisplay.innerHTML = "";
         exampleDisplay.innerHTML = "";
         checkButton.style.display = "block";
@@ -120,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         let normalizedUserAnswer = normalizeString(userAnswer);
-
         let possibleAnswers = correctAnswer
             .split(/[;]/)
             .map(part => normalizeString(part.trim()))
@@ -152,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
             exampleDisplay.innerHTML = `<i>${currentWord.exampleFrench}</i>`;
         }
 
+        answerInput.disabled = true; // Disable input after checking
         checkButton.style.display = "none";
         continueButton.style.display = "block";
     }
