@@ -38,8 +38,7 @@ html, body {
 .container {
     max-width: 500px;
     width: 90%;
-    max-height: 500px;
-    height: 90%;
+    height: 500px;
     background: var(--container-light);
     padding: 25px;
     border-radius: 10px;
@@ -48,7 +47,7 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .dark-mode .container {
@@ -188,7 +187,7 @@ input {
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 10px;
-    max-width: 100%;
+    max-width: 90%;
 }
 
 #result {
@@ -208,7 +207,7 @@ input {
     min-width: 50px;
     max-width: 200px;
     width: 60%;
-    align-self: center;
+    margin-left: auto; margin-right: auto;
 }
 
 /* ======= Buttons ======= */
