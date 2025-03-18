@@ -205,8 +205,10 @@ input {
 }
 
 #check, #continue {
+    min-width: 50px;
+    max-width: 200px;
     width: 60%;
-    margin-inline: 20%;
+    align-self: center;
 }
 
 /* ======= Buttons ======= */
